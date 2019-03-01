@@ -1,5 +1,8 @@
 <template>
   <div>
+    <strong style="font-size: 20px">我的发布</strong>
+    <br>
+    <br>
     <Table size="small" border :columns="columns_prefer" :data="data_prefer" stripe></Table>
   </div>
 </template>

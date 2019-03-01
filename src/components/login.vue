@@ -28,10 +28,10 @@
         },
         methods:{
           submit(){
-
+            this.$router.push('./user')
           }
       }
-        
+
     }
 </script>
 <style lang="scss">
