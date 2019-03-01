@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Table size="small" border :columns="columns7" :data="data6" stripe></Table>
+    <Table size="small" border :columns="columns_prefer" :data="data_prefer" stripe></Table>
   </div>
 </template>
 
@@ -8,28 +8,27 @@
   export default {
     data() {
       return {
-        columns7: [
+        columns_prefer: [
           {
-            title: 'Name',
-            key: 'name',
+            title: '标题',
+            key: 'title',
             render: (h, params) => {
               return h('div', [
-                h('Icon', {
-                  props: {
-                    type: 'md-person'
-                  }
-                }),
-                h('strong', params.row.name)
+                h('strong', params.row.title)
               ]);
             }
           },
           {
-            title: 'Age',
-            key: 'age'
+            title: '城市',
+            key: 'city'
           },
           {
-            title: 'Address',
-            key: 'address'
+            title: '房源类型',
+            key: 'type'
+          },
+          {
+            title: '价格',
+            key: 'price'
           },
           {
             title: 'Action',
@@ -48,33 +47,19 @@
                       this.remove(params.index)
                     }
                   }
-                }, 'Delete')
+                }, '取消收藏')
               ]);
             }
           }
         ],
-        data6: [
+        data_prefer: [
           {
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park'
+            title: '海景房',
+            city: '成都',
+            type: '公寓',
+            price: '8888RMB'
           },
-          {
-            name: 'Jim Green',
-            age: 24,
-            address: 'London No. 1 Lake Park'
-          },
-          {
-            name: 'Joe Black',
-            age: 30,
-            address: 'Sydney No. 1 Lake Park'
-          },
-          {
-            name: 'Jon Snow',
-            age: 26,
-            address: 'Ottawa No. 2 Lake Park'
-          }
-        ]
+        ],
       }
     },
     methods: {

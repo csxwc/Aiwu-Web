@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Tabs :animated="false">
+    <Tabs>
       <TabPane  label="已预订房源" icon="ios-checkbox-outline">
-        <Table size="small" border :columns="columns7" :data="data6" stripe></Table>
+        <Table size="small" border :columns="columns_booking" :data="data_booking" stripe></Table>
       </TabPane>
       <TabPane label="预定过的房源" icon="md-checkbox">
-        <Table size="small" border :columns="columns7" :data="data7" stripe></Table>
+        <Table size="small" border :columns="columns_booked" :data="data_booked" stripe></Table>
       </TabPane>
     </Tabs>
   </div>
@@ -21,13 +21,13 @@
             key: 'title',
             render: (h, params) => {
               return h('div', [
-                h('strong', params.row.name)
+                h('strong', params.row.title)
               ]);
             }
           },
           {
             title: '城市',
-            key: 'province'
+            key: 'city'
           },
           {
             title: '房源类型',
@@ -54,65 +54,60 @@
                       this.remove(params.index)
                     }
                   }
-                }, 'Delete')
+                }, '取消预定')
               ]);
             }
           }
         ],
+        columns_booked: [
+          {
+            title: '标题',
+            key: 'title',
+            render: (h, params) => {
+              return h('div', [
+                h('strong', params.row.title)
+              ]);
+            }
+          },
+          {
+            title: '城市',
+            key: 'city'
+          },
+          {
+            title: '房源类型',
+            key: 'type'
+          },
+          {
+            title: '价格',
+            key: 'price'
+          },
+
+        ],
         data_booking: [
           {
-            title: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park'
+            title: '海景房',
+            city: '成都',
+            type: '公寓',
+            price: '8888RMB'
           },
-          {
-            name: 'Jim Green',
-            age: 24,
-            address: 'London No. 1 Lake Park'
-          },
-          {
-            name: 'Joe Black',
-            age: 30,
-            address: 'Sydney No. 1 Lake Park'
-          },
-          {
-            name: 'Jon Snow',
-            age: 26,
-            address: 'Ottawa No. 2 Lake Park'
-          }
         ],
-        data7: [
+        data_booked: [
           {
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park'
+            title: '海景房',
+            city: '成都',
+            type: '公寓',
+            price: '8888RMB'
           },
-          {
-            name: 'Jim Green',
-            age: 24,
-            address: 'London No. 1 Lake Park'
-          },
-          {
-            name: 'Joe Black',
-            age: 30,
-            address: 'Sydney No. 1 Lake Park'
-          },
-          {
-            name: 'Jon Snow',
-            age: 26,
-            address: 'Ottawa No. 2 Lake Park'
-          }
         ]
       }
     },
     methods: {
       remove(index) {
-        this.data6.splice(index, 1);
+        this.data_booking.splice(index, 1);
       }
     }
   }
 </script>
 
 <style>
-
 </style>
