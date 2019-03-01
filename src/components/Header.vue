@@ -22,7 +22,7 @@
             <Col span="2" push="11">
                 <router-link to="/loginpage">
                     <Icon type="md-contact"/>
-                    登录|注册
+                    登录
                 </router-link>
             </Col>
         </Row>
