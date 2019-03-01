@@ -1,21 +1,38 @@
 <template>
     <div>
     <Header class="container"><v-header></v-header></Header>
+      <vue-particles
+        color="#2db7f5"
+        :particleOpacity="1"
+        :particlesNumber="100"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#2db7f5"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="1"
+        :linesDistance="150"
+        :moveSpeed="2"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        class="lizi"
+      ></vue-particles>
     <Row type="flex" justify="center" align="middle" class="code-row-bg">
         <Col span="8" class="col-bg">
-            <div style="height: 200px">
-              <h1 align="center">登陆</h1>
-              <div class="row">账号：<Input v-model="userID" placeholder="输入邮箱账号..." clearable style="width: 200px" /></div>
-              <div class="row">密码：<Input type="password" v-model="password" placeholder="输入密码..." clearable style="width: 200px" /></div>
-              <div align="center"><Button type="primary" style="width: 250px" @click="submit">登陆</Button></div>
-              <router-link to="/signup" class="aa"><Icon type="md-contact"/>没有账号，前往注册...</router-link>
-            </div>
+          <h1 align="center">登陆</h1>
+          <div class="row">
+          <v-login></v-login>
+          </div>
+          <router-link to="/signuppage" class="aa"><Icon type="md-contact"/>没有账号，前往注册...</router-link>
         </Col>
     </Row>
     </div>
 </template>
 <script>
     import header from './Header.vue'
+    import login from './from_components/login.vue'
     export default {
         data(){
             return{
@@ -24,7 +41,8 @@
             }
         },
         components:{
-            'v-header':header
+            'v-header':header,
+            'v-login':login
         },
         methods:{
           submit(){
@@ -46,7 +64,7 @@
     border-radius: 5px;
 }
 .row{
-  width: 42%;
+  width: 60%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 15px;
@@ -59,5 +77,10 @@ h1{
 .aa{
   float: right;
   color: #2d8cf0;
+}
+#particles-js{
+  position: absolute;
+  width: 100vw;
+  z-index: -999;
 }
 </style>

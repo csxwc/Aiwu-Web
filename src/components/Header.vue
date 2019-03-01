@@ -20,7 +20,7 @@
                     帮助</a>
             </Col>
             <Col span="2" push="11">
-                <router-link to="/login">
+                <router-link to="/loginpage">
                     <Icon type="md-contact"/>
                     登录|注册
                 </router-link>
@@ -177,7 +177,7 @@
         methods:{
             selectChange(event){
                 console.log(event);
-            }        
+            }
         }
     }
 </script>
