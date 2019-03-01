@@ -49,10 +49,12 @@
       </p>
     </Panel>
     <Button type="success" @click="choose" style="width: 200px;margin-left: 40px; margin-bottom: 10px">筛选</Button>
-    <Button type="info" @click="smart" style="width: 200px;margin-left: 40px; margin-bottom: 10px">智能推荐</Button>
+    <Button type="info" @click="smartshow" style="width: 200px;margin-left: 40px; margin-bottom: 10px">智能推荐</Button>
+    <v-smartchoose :show="show" :showclose="smartclose"></v-smartchoose>
   </Collapse>
 </template>
 <script>
+  import smartchoose from './smartchoose.vue'
   export default {
     data () {
       return {
@@ -82,7 +84,8 @@
             label: '整间阁楼'
           }
         ],
-        model1: ''
+        model1: '',
+        show:false
       }
     },
     methods:{
@@ -92,9 +95,15 @@
       choose(){
 
       },
-      smart(){
-
+      smartshow(){
+        this.show = true
+      },
+      smartclose(){
+        this.show = false
       }
+    },
+    components:{
+      'v-smartchoose':smartchoose
     }
   }
 </script>

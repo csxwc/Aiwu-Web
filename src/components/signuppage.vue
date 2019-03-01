@@ -40,14 +40,6 @@
   export default {
     data(){
       return{
-        content:'发送验证码',
-        email:'',
-        password:'',
-        confirmpw:'',
-        code:'',
-        username:'',
-        totalTime: 10,
-        cantClick: false
       }
     },
     components:{

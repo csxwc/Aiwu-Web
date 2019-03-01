@@ -9,7 +9,7 @@
       <Icon type="md-color-wand" />
       清空
     </a>
-    <Tag v-for="item in list" type="border" closable color="error">{{item}}</Tag>
+    <Tag type="border" v-for="item in list" :key="item" :name="item" closable color="error" @on-close="handleClose2">{{item}}</Tag>
   </Card>
   <!--</Affix>-->
 </template>
@@ -18,15 +18,18 @@
     data () {
       return {
         list:[
-          '1',
-          '2',
-          '3',
-          '4'
+          1,
+          2,
+          3,
+          4
         ]
       }
     },
     methods: {
-
+      handleClose2 (event, name) {
+        const index = this.list.indexOf(name);
+        this.list.splice(index, 1);
+      }
     }
   }
 </script>
