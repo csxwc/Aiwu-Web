@@ -11,6 +11,7 @@ import loginpage from '../components/loginpage.vue'
 
 import signuppage from '../components/signuppage.vue'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -37,7 +38,7 @@ export default new Router({
         { path:'my_info', component:my_info},
         { path:'my_preference', component:my_preference },
         { path:'my_release', component:my_release },
-        { path:'/', redirect:'my_booked'}
+        { path:'/user', redirect:'my_booked'}
       ]
     }
   ]

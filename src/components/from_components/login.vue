@@ -37,7 +37,7 @@
     },
     methods: {
       handleSubmit(name) {
-
+        this.$router.push({path: 'user'})
       }
     }
   }

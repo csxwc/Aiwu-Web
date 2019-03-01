@@ -9,7 +9,7 @@
       <Icon type="md-color-wand" />
       清空
     </a>
-    <Tag v-for="item in list" type="border" closable color="error">{{item}}</Tag>
+    <Tag v-for="item in list":key="item.id" type="border" closable color="error">{{item}}</Tag>
   </Card>
   <!--</Affix>-->
 </template>

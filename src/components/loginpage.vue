@@ -46,7 +46,7 @@
         },
         methods:{
           submit(){
-            this.$router.push('./user')
+
           }
       }
 
