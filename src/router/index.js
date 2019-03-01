@@ -7,9 +7,9 @@ import my_booked from '../components/user_components/my_booked.vue'
 import my_info from '../components/user_components/my_info.vue'
 import my_preference from '../components/user_components/my_preference.vue'
 import my_release from '../components/user_components/my_release'
-import login from '../components/login.vue'
+import loginpage from '../components/loginpage.vue'
 
-import signup from '../components/signup.vue'
+import signuppage from '../components/signuppage.vue'
 
 Vue.use(Router)
 
@@ -25,8 +25,8 @@ export default new Router({
     },
     { path: '/map', component: mapBuild},
 
-    { path: '/login', component: login},
-    { path: '/signup', component: signup},
+    { path: '/loginpage', component: loginpage},
+    { path: '/signuppage', component: signuppage},
 
     { path: '*', redirect :'/home'},
 

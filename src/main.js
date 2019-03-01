@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
+
 /*************引入axios************************/
 import axios from 'axios'
 Vue.prototype.$axios = axios;

@@ -61,7 +61,12 @@
         height: 756px;
         width: 80%;
         float: right;
+      position: relative;
     }
+  .ivu-card-bordered {
+    position: absolute;
+    top: 60px;
+  }
   .clp{
     height: 756px;
     width: 20%;
