@@ -1,6 +1,6 @@
 <template>
   <Modal
-    v-model="show"
+    v-model='show'
     title="智能筛选推荐"
     @on-ok="ok"
     @on-cancel="cancel">
@@ -29,7 +29,9 @@
         travel:50,
         seen:50,
         modal1: false,
-        List: [
+        show:this.$store.state.show,
+        List:
+          [
           {
             value: '极致性价比',
             label: '极致性价比'
@@ -54,13 +56,16 @@
             value: '潇洒独游',
             label: '潇洒独游'
           }
-        ],
+        ]
+        ,
         model10: []
       }
     },
     methods: {
       ok () {
         this.$Message.info('Clicked ok');
+        // this.$store.state.zhutilsit = this.model10
+        // this.$store.dispatch('changeAllFooter',this.model10,this.price,this.dist,this.room,this.travel,this.seen)
         this.showclose()
       },
       cancel () {
@@ -68,6 +73,6 @@
         this.showclose()
       }
     },
-    props:['show','showclose']
+    props:['showclose']
   }
 </script>

@@ -50,7 +50,7 @@
     </Panel>
     <Button type="success" @click="choose" style="width: 200px;margin-left: 40px; margin-bottom: 10px">筛选</Button>
     <Button type="info" @click="smartshow" style="width: 200px;margin-left: 40px; margin-bottom: 10px">智能推荐</Button>
-    <v-smartchoose :show="show" :showclose="smartclose"></v-smartchoose>
+    <v-smartchoose :showclose="smartclose"></v-smartchoose>
   </Collapse>
 </template>
 <script>
@@ -96,10 +96,10 @@
 
       },
       smartshow(){
-        this.show = true
+        this.$store.dispatch('changeShowFooter',true)
       },
       smartclose(){
-        this.show = false
+        this.$store.dispatch('changeShowFooter',false)
       }
     },
     components:{
