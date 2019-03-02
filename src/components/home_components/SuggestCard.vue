@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div >
     <img :src="src" alt="" width="300px" height="200px" @click="showDetail">
     <br>
-    <strong>最美景安城</strong>
-    <br>
+    <div><strong >{{title}}</strong></div>
     <div v-if="detail">详细信息</div>
   </div>
 </template>
@@ -16,7 +15,8 @@
       }
     },
     props: {
-      'src': null
+      'src': null,
+      'title':null
     },
     methods:{
       showDetail(){

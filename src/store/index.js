@@ -56,7 +56,8 @@ const actions = {
   changeShowFooter(context,show){
     context.commit('changeShow',show)
   }
-};
+}
+
 const store = new Vuex.Store({
   state,
   getters,
