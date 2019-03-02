@@ -12,22 +12,22 @@
     <br>
     <Icon type="md-pulse" />
     <h1 style="font-size: small">条件比重筛选</h1><br>
-    价格：<Slider v-model="price" :tip-format="format"></Slider>
-    距离：<Slider v-model="dist" :tip-format="format"></Slider>
-    房间大小：<Slider v-model="room" :tip-format="format"></Slider>
-    出行：<Slider v-model="travel" :tip-format="format"></Slider>
-    距离景点：<Slider v-model="seen" :tip-format="format"></Slider>
+    价格：<Slider v-model="price"></Slider>
+    距离：<Slider v-model="dist"></Slider>
+    房间大小：<Slider v-model="room"></Slider>
+    出行：<Slider v-model="travel"></Slider>
+    距离景点：<Slider v-model="seen"></Slider>
   </Modal>
 </template>
 <script>
   export default {
     data () {
       return {
-        price:'50',
-        dist:'50',
-        room:'50',
-        travel:'50',
-        seen:'50',
+        price:50,
+        dist:50,
+        room:50,
+        travel:50,
+        seen:50,
         modal1: false,
         List: [
           {

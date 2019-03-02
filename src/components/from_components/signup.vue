@@ -1,22 +1,22 @@
 <template>
   <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
     <FormItem label="用户名" prop="name">
-      <Input v-model="formValidate.name" placeholder="输入用户名"></Input>
+      <Input v-model="formValidate.name" placeholder="输入用户名" clearable></Input>
     </FormItem>
     <FormItem label="邮箱" prop="mail">
-      <Input v-model="formValidate.mail" placeholder="输入邮箱"></Input>
+      <Input v-model="formValidate.mail" placeholder="输入邮箱" clearable></Input>
     </FormItem>
     <FormItem>
     <Button type="primary" :disabled="cantClick" style="width:200px;margin-top: 10px" @click="send">{{content}}</Button>
     </FormItem>
     <FormItem label="验证码" prop="code">
-      <Input v-model="formValidate.code" placeholder="输入验证码"></Input>
+      <Input v-model="formValidate.code" placeholder="输入验证码"  clearable></Input>
     </FormItem>
     <FormItem label="Password" prop="passwd">
-      <Input type="password" v-model="formValidate.passwd"></Input>
+      <Input type="password" v-model="formValidate.passwd" clearable></Input>
     </FormItem>
     <FormItem label="Confirm" prop="passwdCheck">
-      <Input type="password" v-model="formValidate.passwdCheck"></Input>
+      <Input type="password" v-model="formValidate.passwdCheck" clearable></Input>
     </FormItem>
     <FormItem label="出生日期">
       <Row>
@@ -29,12 +29,12 @@
     </FormItem>
     <FormItem label="性别" prop="gender">
       <RadioGroup v-model="formValidate.gender">
-        <Radio label="男">Male</Radio>
-        <Radio label="女">Female</Radio>
+        <Radio label="m">男</Radio>
+        <Radio label="f">女</Radio>
       </RadioGroup>
     </FormItem>
     <FormItem label="个人介绍" prop="desc">
-      <Input v-model="formValidate.desc" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..."></Input>
+      <Input v-model="formValidate.desc" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..." clearable></Input>
     </FormItem>
     <FormItem>
       <Button type="primary" @click="handleSubmit('formValidate')">注册</Button>
@@ -128,7 +128,7 @@
           email: this.formValidate.mail,
           password: this.formValidate.passwd,
           code: this.formValidate.code,
-          username: this.formValidate.username,
+          username: this.formValidate.name,
           desc:this.formValidate.desc,
           date:this.formValidate.date,
           gender:this.formValidate.gender
@@ -141,7 +141,7 @@
           });
       },
       send(){
-        this.$axios.post('http://118.113.9.118:8888/user/register/mail',{
+        this.$axios.post('http://182.149.197.247:8888/user/register/mail',{
           email:this.formValidate.mail
         })
           .then((response) => {

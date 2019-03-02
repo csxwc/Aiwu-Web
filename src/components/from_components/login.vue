@@ -37,7 +37,16 @@
     },
     methods: {
       handleSubmit(name) {
-        this.$router.push({path: 'user'})
+        this.$axios.post('http://118.113.9.118:8888/user/check',{
+          username:this.formInline.user,
+          password:this.formInline.password
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     }
   }

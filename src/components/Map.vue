@@ -30,6 +30,7 @@
     data() {
       return {
         points: [],
+        center:{lng:'',lat:''},
         positions: [
           {lng: 104.06792346, lat: 30.47994285},
           {lng: 104.16792346, lat: 30.37994285},
@@ -46,8 +47,9 @@
     },
     methods: {
       showpoint(e) {
-        this.position.lng = e.point.lng
-        this.position.lat = e.point.lat
+        this.center.lng = e.point.lng
+        this.center.lat = e.point.lat
+        console.log(this.center)
       },
       showdetail() {
         this.$refs.showdetail.value4 = true
