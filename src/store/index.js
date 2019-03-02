@@ -26,10 +26,10 @@ const mutations = {
     state.changableNum+=sum;
   }
 };
-const store = new Vuex.Store({
+
+
+export default new Vuex.Store({
   state,
   getters,
   mutations
 });
-
-export default store;
