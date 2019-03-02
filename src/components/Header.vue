@@ -1,30 +1,27 @@
 <template>
   <div>
-    <Row :gutter="10">
-      <Col span="5">
-        <Select v-model="selected" style="width:100%" size="large" placeholder="请选择房源地..."
-                @on-change="selectChange($event)">
-          <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-        </Select>
+    <Row>
+      <Col span="12">
+        <Row :gutter="10">
+          <Col span="8">
+            <Select @on-change="selectChange($event)"
+                    placeholder="请选择房源地..."
+                    size="large"
+                    style="width:100%"
+                    v-model="selected">
+              <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
+            </Select></Col>
+          <Col span="2">
+            <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
+          </Col>
+        </Row>
       </Col>
-      <Col span="2">
-        <Button size="large" icon="ios-search" @click="sendLocation">Search</Button>
-      </Col>
-      <Col span="2" push="11">
-        <a href="">
-          <Icon type="md-home"/>
-          主页</a>
-      </Col>
-      <Col span="2" push="11">
-        <a href="">
-          <Icon type="md-compass"/>
-          帮助</a>
-      </Col>
-      <Col span="2" push="11">
-        <router-link to="/loginpage">
-          <Icon type="md-contact"/>
-          登录
-        </router-link>
+      <Col span="12">
+        <Row type="flex" justify="end" :gutter="10">
+          <Col span="2"><a href=""><Icon type="md-home"/>主页</a></Col>
+          <Col span="2"><a href=""><Icon type="md-compass"/>帮助</a></Col>
+          <Col span="2"><router-link to="/loginpage"><Icon type="md-contact"/>登录</router-link></Col>
+        </Row>
       </Col>
     </Row>
   </div>
@@ -183,11 +180,10 @@
       selectChange(event) {
         console.log(event);
       },
-      sendLocation(){
-        if(this.selected === ''){
+      sendLocation() {
+        if (this.selected === '') {
           this.$Message.warning('请选择一个城市！');
-        }
-        else {
+        } else {
           VueEvent.$emit('location', this.selected)
           this.$router.push('/map')
         }
@@ -202,7 +198,7 @@
   a {
     float: right;
     color: white;
-    font-size: 18px
+    font-size: 15px;
   }
 
 </style>

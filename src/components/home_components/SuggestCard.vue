@@ -1,6 +1,6 @@
 <template>
   <div >
-    <img :src="src" alt="" width="300px" height="200px" @click="showDetail">
+    <img :src="src" alt="" width="100%" height="100%" @click="showDetail">
     <br>
     <div><strong >{{title}}</strong></div>
     <div v-if="detail">详细信息</div>
