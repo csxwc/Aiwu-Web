@@ -56,12 +56,13 @@ const actions = {
   changeShowFooter(context,show){
     context.commit('changeShow',show)
   }
-};
+}
 
-
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   getters,
   mutations,
   actions
 });
+
+export default store;
