@@ -4,23 +4,35 @@
       <Col span="12">
         <Row :gutter="10">
           <Col span="8">
+            <!--给select标签添加transfer属性，防止被其他原件覆盖！！！！-->
             <Select @on-change="selectChange($event)"
                     placeholder="请选择房源地..."
                     size="large"
+                    transfer
                     style="width:100%"
                     v-model="selected">
               <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
-            </Select></Col>
+            </Select>
+          </Col>
           <Col span="2">
             <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
           </Col>
         </Row>
       </Col>
       <Col span="12">
-        <Row type="flex" justify="end" :gutter="10">
-          <Col span="2"><a href=""><Icon type="md-home"/>主页</a></Col>
-          <Col span="2"><a href=""><Icon type="md-compass"/>帮助</a></Col>
-          <Col span="2"><router-link to="/loginpage"><Icon type="md-contact"/>登录</router-link></Col>
+        <Row :gutter="10" justify="end" type="flex">
+          <Col span="2"><a href="">
+            <Icon type="md-home"/>
+            主页</a></Col>
+          <Col span="2"><a href="">
+            <Icon type="md-compass"/>
+            帮助</a></Col>
+          <Col span="2">
+            <router-link to="/loginpage">
+              <Icon type="md-contact"/>
+              登录
+            </router-link>
+          </Col>
         </Row>
       </Col>
     </Row>

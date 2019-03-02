@@ -1,22 +1,19 @@
 <template>
   <div>
-    <strong>基本信息</strong>
-    <br>姓名：{{user_info.username}}
-    <br>性别：{{user_info.sex}}
-    <br>电话号码：{{user_info.phoneNumber}}
-    <br>自我介绍：{{user_info.introduction}}
-    <br>email:{{user_info.email}}
-
-    <hr>
-    <strong>详细信息</strong>
-    <br>身份证号：{{user_info.id}}
-    <br>注册时间：{{user_info.regTime}}
-    <br>出生日期：{{user_info.birthday}}
-
-    <br>
-    <br>
-    <br>
-    <br>
+    <Card>
+      <p slot="title">基本信息</p>
+      <br>姓名：{{user_info.username}}
+      <br>性别：{{user_info.sex}}
+      <br>电话号码：{{user_info.phoneNumber}}
+      <br>自我介绍：{{user_info.introduction}}
+      <br>email:{{user_info.email}}
+    </Card>
+    <Card>
+      <p slot="title">详细信息</p>
+      <br>身份证号：{{user_info.id}}
+      <br>注册时间：{{user_info.regTime}}
+      <br>出生日期：{{user_info.birthday}}
+    </Card>
     <Button type="primary">修改信息</Button>
 
 

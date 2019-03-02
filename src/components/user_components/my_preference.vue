@@ -65,14 +65,14 @@
         ],
       }
     },
-    mounted:{
-
-    },
     methods: {
       remove(index) {
         this.data_prefer.splice(index, 1);
       }
-    }
+    },
+    mounted(){
+
+    },
   }
 </script>
 
