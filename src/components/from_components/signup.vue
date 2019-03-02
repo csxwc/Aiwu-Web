@@ -4,7 +4,7 @@
       <Input v-model="formValidate.name" placeholder="输入用户名" clearable></Input>
     </FormItem>
     <FormItem label="邮箱" prop="mail">
-      <Input v-model="formValidate.mail" placeholder="输入邮箱" clearable></Input>
+      <Input v-model="formValidate.mail" placeholder="输入邮箱" @on-change="mailchange" clearable></Input>
     </FormItem>
     <FormItem>
     <Button type="primary" :disabled="cantClick" style="width:200px;margin-top: 10px" @click="send">{{content}}</Button>
@@ -67,7 +67,7 @@
       };
       return {
         totalTime: 10,
-        cantClick: false,
+        cantClick: true,
         content:'发送验证码',
         formValidate: {
           name: '',
@@ -124,7 +124,7 @@
         this.$refs[name].resetFields();
       },
       submit(){
-        this.$axios.post('http://118.113.9.118:8888/user/register', {
+        this.$axios.post('http://182.149.197.247:8888/user/register', {
           email: this.formValidate.mail,
           password: this.formValidate.passwd,
           code: this.formValidate.code,
@@ -163,6 +163,15 @@
             this.cantClick = false  //这里重新开启
           }
         },1000)
+      },
+      mailchange(){
+        var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+        var obj = this.formValidate.mail; //要验证的对象
+        if(!reg.test(obj)){ //正则验证不通过，格式不对
+          this.cantClick = true
+        }else{
+          this.cantClick = false
+        }
       }
     }
   }

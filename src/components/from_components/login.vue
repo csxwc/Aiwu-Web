@@ -37,7 +37,7 @@
     },
     methods: {
       handleSubmit(name) {
-        this.$axios.post('http://118.113.9.118:8888/user/check',{
+        this.$axios.post('http://182.149.197.247:8888/user/check',{
           username:this.formInline.user,
           password:this.formInline.password
         })

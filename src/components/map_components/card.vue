@@ -1,6 +1,6 @@
 <template>
   <!--<Affix :offset-bottom="550">-->
-  <Card style="width:350px;height:150px;margin-left: 70px">
+  <Card style="width:350px;height:200px;margin-left: 70px">
     <p slot="title">
       <Icon type="ios-heart" />
       推荐条件
@@ -17,12 +17,7 @@
   export default {
     data () {
       return {
-        list:[
-          1,
-          2,
-          3,
-          4
-        ]
+        list:this.$store.state.zhutilsit
       }
     },
     methods: {

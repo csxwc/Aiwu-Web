@@ -3,33 +3,65 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state={//要设置的全局访问的state对象
-  showFooter: true,
-  changableNum:0
+  zhutilsit:[
+  ],
+  price:50,
+  dist:50,
+  room:50,
+  travel:50,
+  seen:50,
+  show:false
   //要设置的初始属性值
 };
 const getters = {   //实时监听state值的变化(最新状态)
-  isShow(state) {  //方法名随意,主要是来承载变化的showFooter的值
-    return state.showFooter
+  getZhutilist(){
+    return state.zhutilsit
   },
-  getChangedNum(){  //方法名随意,主要是用来承载变化的changableNum的值
-    return state.changebleNum
+  getPrice(){
+    return state.price
+  },
+  getDist(){
+    return state.dist
+  },
+  getRoom(){
+    return state.room
+  },
+  getTravel(){
+    return state.travel
+  },
+  getSeen(){
+    return state.seen
+  },
+  getShow(){
+    return state.show
   }
 };
 const mutations = {
-  show(state) {   //自定义改变state初始值的方法，这里面的参数除了state之外还可以再传额外的参数(变量或对象);
-    state.showFooter = true;
+  changeAll(state,list,price,dist,room,travel,seen){
+    state.zhutilsit = state.zhutilsit.concat(list);
+    state.price = price;
+    state.dist = dist;
+    state.room = room;
+    state.travel = travel;
+    state.seen = seen;
   },
-  hide(state) {  //同上
-    state.showFooter = false;
+  changeShow(state,show){
+    state.show = show;
+  }
+};
+const actions = {
+  changeAllFooter(context,list,price,dist,room,travel,see){
+    context.commit('changeAll',list,price,dist,room,travel,see)
   },
-  newNum(state,sum){ //同上，这里面的参数除了state之外还传了需要增加的值sum
-    state.changableNum+=sum;
+  changeShowFooter(context,show){
+    context.commit('changeShow',show)
   }
 };
 const store = new Vuex.Store({
   state,
   getters,
-  mutations
+  mutations,
+  actions
 });
 
 export default store;
