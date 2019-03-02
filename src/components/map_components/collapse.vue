@@ -64,11 +64,11 @@
         switch4:true,
         switch5:true,
         switch6:true,
-        value1: ['1','2','3','4','5','6'],
-        people:'0',
-        room:'0',
-        bed:'0',
-        bathroom:'0',
+        value1: [1,2,3,4,5,6],
+        people:0,
+        room:0,
+        bed:0,
+        bathroom:0,
         money:[20,50],
         cityList: [
           {
