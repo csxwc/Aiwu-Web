@@ -37,21 +37,21 @@ const getters = {   //实时监听state值的变化(最新状态)
   }
 };
 const mutations = {
-  changeAll(state,list,price,dist,room,travel,seen){
-    state.zhutilsit = state.zhutilsit.concat(list);
-    state.price = price;
-    state.dist = dist;
-    state.room = room;
-    state.travel = travel;
-    state.seen = seen;
+  changeAll(state,obj){
+    state.zhutilsit = state.zhutilsit.concat(obj.list);
+    state.price = obj.price;
+    state.dist = obj.dist;
+    state.room = obj.room;
+    state.travel = obj.travel;
+    state.seen = obj.seen;
   },
   changeShow(state,show){
     state.show = show;
   }
 };
 const actions = {
-  changeAllFooter(context,list,price,dist,room,travel,see){
-    context.commit('changeAll',list,price,dist,room,travel,see)
+  changeAllFooter(context,obj){
+    context.commit('changeAll',obj)
   },
   changeShowFooter(context,show){
     context.commit('changeShow',show)

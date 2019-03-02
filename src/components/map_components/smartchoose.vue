@@ -23,11 +23,12 @@
   export default {
     data () {
       return {
-        price:50,
-        dist:50,
-        room:50,
-        travel:50,
-        seen:50,
+        price: 50,
+        dist: 50,
+        room: 50,
+        travel: 50,
+        seen: 50,
+        model10: [],
         modal1: false,
         List:
           [
@@ -56,15 +57,20 @@
             label: '潇洒独游'
           }
         ]
-        ,
-        model10: []
       }
     },
     methods: {
       ok () {
         this.$Message.info('Clicked ok');
         // this.$store.state.zhutilsit = this.model10
-        this.$store.dispatch('changeAllFooter',this.model10,this.price,this.dist,this.room,this.travel,this.seen)
+        var obj = {};
+        obj.list = this.model10;
+        obj.price = this.price;
+        obj.dist = this.dist;
+        obj.room = this.room;
+        obj.travel = this.travel;
+        obj.seen = this.seen;
+        this.$store.dispatch('changeAllFooter',obj)
       },
       cancel () {
         this.$Message.info('Clicked cancel');
