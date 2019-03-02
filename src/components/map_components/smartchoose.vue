@@ -1,6 +1,6 @@
 <template>
   <Modal
-    v-model='show'
+    v-model='visible'
     title="智能筛选推荐"
     @on-ok="ok"
     @on-cancel="cancel">
@@ -29,7 +29,6 @@
         travel:50,
         seen:50,
         modal1: false,
-        show:this.$store.state.show,
         List:
           [
           {
@@ -65,14 +64,21 @@
       ok () {
         this.$Message.info('Clicked ok');
         // this.$store.state.zhutilsit = this.model10
-        // this.$store.dispatch('changeAllFooter',this.model10,this.price,this.dist,this.room,this.travel,this.seen)
-        this.showclose()
+        this.$store.dispatch('changeAllFooter',this.model10,this.price,this.dist,this.room,this.travel,this.seen)
       },
       cancel () {
         this.$Message.info('Clicked cancel');
-        this.showclose()
       }
     },
-    props:['showclose']
+    computed: {
+      visible:{
+        get(){
+        return this.$store.state.show
+      },
+        set(){
+          this.$store.dispatch('changeShowFooter',false);
+        }
+      }
+    }
   }
 </script>

@@ -50,7 +50,7 @@
     </Panel>
     <Button type="success" @click="choose" style="width: 200px;margin-left: 40px; margin-bottom: 10px">筛选</Button>
     <Button type="info" @click="smartshow" style="width: 200px;margin-left: 40px; margin-bottom: 10px">智能推荐</Button>
-    <v-smartchoose :showclose="smartclose"></v-smartchoose>
+    <v-smartchoose ></v-smartchoose>
   </Collapse>
 </template>
 <script>
@@ -84,8 +84,7 @@
             label: '整间阁楼'
           }
         ],
-        model1: '',
-        show:false
+        model1: ''
       }
     },
     methods:{
@@ -96,10 +95,7 @@
 
       },
       smartshow(){
-        this.$store.dispatch('changeShowFooter',true)
-      },
-      smartclose(){
-        this.$store.dispatch('changeShowFooter',false)
+        this.$store.dispatch('changeShowFooter',true);
       }
     },
     components:{

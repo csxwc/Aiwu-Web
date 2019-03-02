@@ -17,13 +17,17 @@
   export default {
     data () {
       return {
-        list:this.$store.state.zhutilsit
       }
     },
     methods: {
       handleClose2 (event, name) {
         const index = this.list.indexOf(name);
         this.list.splice(index, 1);
+      }
+    },
+    computed:{
+      list(){
+        return this.$store.state.zhutilsit
       }
     }
   }
