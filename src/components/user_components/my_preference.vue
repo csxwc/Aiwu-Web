@@ -65,9 +65,12 @@
         ],
       }
     },
+    mounted:{
+
+    },
     methods: {
       remove(index) {
-        this.data6.splice(index, 1);
+        this.data_prefer.splice(index, 1);
       }
     }
   }

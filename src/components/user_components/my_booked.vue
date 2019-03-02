@@ -101,6 +101,16 @@
         ]
       }
     },
+    mounted(){
+      this.$axios
+        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then(response=>{
+          console.log(response)
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+    },
     methods: {
       remove(index) {
         this.data_booking.splice(index, 1);
