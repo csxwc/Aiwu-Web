@@ -6,7 +6,7 @@
     <v-collapse class="clp"></v-collapse>
     <baidu-map class="map" :center="{lng: 104.06792346, lat: 30.67994285}" :zoom="15" :scroll-wheel-zoom="true">
       <v-card></v-card>
-      <bm-marker v-for="item in positions" :position="item" :dragging="false"
+      <bm-marker v-for="item in positions" :key="item.id" :position="item" :dragging="false"
                  animation="BMAP_ANIMATION_BOUNCE" @click="showdetail">
 
       </bm-marker>

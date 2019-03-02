@@ -7,7 +7,7 @@
       <i-switch  size="small" class="choose" v-model="switch1" @on-change="change" />
       <p slot="content">
         <Select v-model="model1" style="width:200px">
-        <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        <Option v-for="item in cityList" :key="item.value" :value="item.value" >{{ item.label }}</Option>
         </Select>
       </p>
     </Panel>
@@ -64,23 +64,23 @@
         switch4:true,
         switch5:true,
         switch6:true,
-        value1: ['1','2','3','4','5','6'],
-        people:'0',
-        room:'0',
-        bed:'0',
-        bathroom:'0',
+        value1: [1,2,3,4,5,6],
+        people:0,
+        room:0,
+        bed:0,
+        bathroom:0,
         money:[20,50],
         cityList: [
           {
-            value: '普通公寓',
+            value: 1,
             label: '普通公寓'
           },
           {
-            value: '整套公寓',
+            value: 2,
             label: '整套公寓'
           },
           {
-            value: '整间阁楼',
+            value: 3,
             label: '整间阁楼'
           }
         ],

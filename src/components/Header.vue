@@ -184,8 +184,8 @@
         console.log(event);
       },
       sendLocation(){
-        if(this.selected == ''){
-          console.log('please select a city')
+        if(this.selected === ''){
+          this.$Message.warning('请选择一个城市！');
         }
         else {
           VueEvent.$emit('location', this.selected)
