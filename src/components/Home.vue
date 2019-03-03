@@ -1,7 +1,7 @@
 <template>
     <div>
         <Layout>
-            <Header class="container"><v-header></v-header></Header>
+            <v-header></v-header>
             <Content>
                 <div style="text-align: center">
                     <Carousel

@@ -1,41 +1,67 @@
 <template>
   <div>
-    <Row>
-      <Col span="12">
-        <Row :gutter="10">
-          <Col span="8">
-            <!--给select标签添加transfer属性，防止被其他原件覆盖！！！！-->
-            <Select @on-change="selectChange($event)"
-                    placeholder="请选择房源地..."
-                    size="large"
-                    transfer
-                    style="width:100%"
-                    v-model="selected">
-              <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
-            </Select>
-          </Col>
-          <Col span="2">
-            <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
-          </Col>
-        </Row>
-      </Col>
-      <Col span="12">
-        <Row :gutter="10" justify="end" type="flex">
-          <Col span="2"><a href="">
-            <Icon type="md-home"/>
-            主页</a></Col>
-          <Col span="2"><a href="">
-            <Icon type="md-compass"/>
-            帮助</a></Col>
-          <Col span="2">
-            <router-link to="/loginpage">
-              <Icon type="md-contact"/>
-              登录
-            </router-link>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <!--<Row>-->
+      <!--<Col span="12">-->
+        <!--<Row :gutter="10">-->
+          <!--<Col span="8">-->
+            <!--&lt;!&ndash;给select标签添加transfer属性，防止被其他原件覆盖！！！！&ndash;&gt;-->
+            <!--<Select @on-change="selectChange($event)"-->
+                    <!--placeholder="请选择房源地..."-->
+                    <!--size="large"-->
+                    <!--style="width:100%"-->
+                    <!--transfer-->
+                    <!--v-model="selected">-->
+              <!--<Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>-->
+            <!--</Select>-->
+          <!--</Col>-->
+          <!--<Col span="2">-->
+            <!--<Button @click="sendLocation" icon="ios-search" size="large">Search</Button>-->
+          <!--</Col>-->
+        <!--</Row>-->
+      <!--</Col>-->
+      <!--<Col span="12">-->
+        <!--<a href="">-->
+          <!--<Icon type="md-home"/>-->
+          <!--主页</a>-->
+        <!--<a>-->
+          <!--<Icon type="md-compass"/>-->
+          <!--帮助</a>-->
+        <!--<router-link to="/loginpage">-->
+          <!--<Icon type="md-contact"/>-->
+          <!--登录-->
+        <!--</router-link>-->
+      <!--</Col>-->
+    <!--</Row>-->
+    <Menu mode="horizontal" :theme="'dark'">
+      <MenuItem name="1" style="width: 20%">
+        <Select @on-change="selectChange($event)"
+                placeholder="请选择房源地..."
+                size="large"
+                style="width:100%"
+                transfer
+                v-model="selected">
+          <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
+        </Select>
+      </MenuItem>
+      <MenuItem name="1" style="width: 10%;padding-left:0px ">
+        <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
+      </MenuItem>
+      <div style="float: right;">
+        <MenuItem style="padding-left: 0" to="/home">
+          <Icon type="md-home"/>
+          主页
+        </MenuItem >
+        <MenuItem style="padding-left: 0">
+          <Icon type="md-compass"/>
+          帮助
+        </MenuItem>
+        <MenuItem style="padding-left: 0" to="/loginpage">
+          <Icon type="md-contact"/>
+          登录
+        </MenuItem>
+      </div>
+
+    </Menu>
   </div>
 </template>
 
@@ -207,10 +233,8 @@
 
 <style>
 
-  a {
-    float: right;
-    color: white;
-    font-size: 15px;
+  .item {
+
   }
 
 </style>

@@ -1,9 +1,6 @@
 <template>
   <Layout>
-    <Header class="container">
-      <v-header></v-header>
-    </Header>
-
+    <v-header></v-header>
     <div>
       <Row style="height:615px">
         <Col :span="3">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="container"><v-header></v-header></Header>
+   <v-header></v-header>
 
     <vue-particles
       color="#2db7f5"
