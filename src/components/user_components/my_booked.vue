@@ -81,6 +81,10 @@
             title: '价格',
             key: 'price'
           },
+          {
+            title: '时间',
+            key: 'time'
+          }
 
         ],
         data_booking: [
@@ -96,7 +100,8 @@
             title: '海景房',
             city: '成都',
             type: '公寓',
-            price: '8888RMB'
+            price: '8888RMB',
+            time:'2000.2.2-2008.2.2'
           },
         ]
       }
