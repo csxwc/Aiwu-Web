@@ -10,6 +10,7 @@ import my_release from '../components/user_components/my_release'
 import loginpage from '../components/loginpage.vue'
 
 import signuppage from '../components/signuppage.vue'
+import houseinfo from  '../components/houseinfo'
 
 
 Vue.use(Router)
@@ -40,6 +41,10 @@ export default new Router({
         { path:'my_release', component:my_release },
         { path:'/user', redirect:'my_booked'}
       ]
+    },
+    {
+      path:'/houseinfo',
+      component:houseinfo
     }
   ]
 })
