@@ -2,6 +2,7 @@
   <div>
     <v-header></v-header>
     <v-pics></v-pics>
+
   </div>
 </template>
 
