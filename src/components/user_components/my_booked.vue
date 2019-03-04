@@ -34,16 +34,31 @@
             key: 'type'
           },
           {
-            title: '价格',
-            key: 'price'
+            title: '开始时间',
+            key: 'starttime'
           },
           {
-            title: 'Action',
+            title:'结束时间',
+            key: 'endtime'
+          },
+          {
+            title: '操作',
             key: 'action',
             width: 150,
             align: 'center',
             render: (h, params) => {
               return h('div', [
+                h('Button', {
+                props: {
+                  type: 'primary',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.detail()
+                  }
+                }
+              }, '详情'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -54,7 +69,8 @@
                       this.remove(params.index)
                     }
                   }
-                }, '取消预定')
+                }, '取消预定'),
+
               ]);
             }
           }
@@ -78,21 +94,21 @@
             key: 'type'
           },
           {
-            title: '价格',
-            key: 'price'
+            title: '开始时间',
+            key: 'starttime'
           },
           {
-            title: '时间',
-            key: 'time'
-          }
-
+            title:'结束时间',
+            key: 'endtime'
+          },
         ],
         data_booking: [
           {
             title: '海景房',
             city: '成都',
             type: '公寓',
-            price: '8888RMB'
+            starttime:'2000.2.2',
+            endtime:'2002.2.2'
           },
         ],
         data_booked: [
@@ -100,8 +116,8 @@
             title: '海景房',
             city: '成都',
             type: '公寓',
-            price: '8888RMB',
-            time:'2000.2.2-2008.2.2'
+            starttime:'2000.2.2',
+            endtime:'2002.2.2'
           },
         ]
       }
@@ -109,6 +125,9 @@
     methods: {
       remove(index) {
         this.data_booking.splice(index, 1);
+      },
+      detail(index){
+        this.$router.push("/home")
       }
     },
     mounted(){

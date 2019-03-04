@@ -10,7 +10,6 @@ import my_release from '../components/user_components/my_release'
 import loginpage from '../components/loginpage.vue'
 
 import signuppage from '../components/signuppage.vue'
-import houseinfo from  '../components/houseinfo'
 
 
 Vue.use(Router)
