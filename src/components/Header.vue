@@ -43,19 +43,19 @@
           <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
         </Select>
       </MenuItem>
-      <MenuItem name="1" style="width: 10%;padding-left:0px ">
+      <MenuItem name="2" style="width: 10%;padding-left:0px ">
         <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
       </MenuItem>
       <div style="float: right;">
-        <MenuItem style="padding-left: 0" to="/home">
+        <MenuItem style="padding-left: 0" to="/home" name="3">
           <Icon type="md-home"/>
           主页
         </MenuItem >
-        <MenuItem style="padding-left: 0">
+        <MenuItem style="padding-left: 0" name="4">
           <Icon type="md-compass"/>
           帮助
         </MenuItem>
-        <MenuItem style="padding-left: 0" to="/loginpage">
+        <MenuItem style="padding-left: 0" to="/loginpage" name="5">
           <Icon type="md-contact"/>
           登录
         </MenuItem>
