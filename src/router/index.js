@@ -41,9 +41,5 @@ export default new Router({
         { path:'/user', redirect:'my_booked'}
       ]
     },
-    {
-      path:'/houseinfo',
-      component:houseinfo
-    }
   ]
 })

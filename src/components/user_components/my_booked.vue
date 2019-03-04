@@ -102,15 +102,7 @@
             key: 'endtime'
           },
         ],
-        data_booking: [
-          {
-            title: '海景房',
-            city: '成都',
-            type: '公寓',
-            starttime:'2000.2.2',
-            endtime:'2002.2.2'
-          },
-        ],
+        data_booking: [],
         data_booked: [
           {
             title: '海景房',
@@ -119,8 +111,11 @@
             starttime:'2000.2.2',
             endtime:'2002.2.2'
           },
-        ]
+        ],
+        userid :'',
+        dataget :[]
       }
+
     },
     methods: {
       remove(index) {
@@ -128,13 +123,21 @@
       },
       detail(index){
         this.$router.push("/home")
-      }
+      },
     },
     mounted(){
+      // this.$axios
+      //   .post('localhost:8888/rent/getnotused',{'userid': 0})
+      //   .then(response=>{
+      //     console.log(response)
+      //   })
+      //   .catch(error=>{
+      //     console.log(error)
+      //   })
       this.$axios
-        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .post('http://localhost:8888/rent/getnotused',{userid: 1})
         .then(response=>{
-          console.log(response)
+          console.log(response.data)
         })
         .catch(error=>{
           console.log(error)
