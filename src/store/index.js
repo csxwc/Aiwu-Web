@@ -38,6 +38,7 @@ const getters = {   //实时监听state值的变化(最新状态)
 };
 const mutations = {
   changeAll(state,obj){
+    state.zhutilsit = [];
     state.zhutilsit = state.zhutilsit.concat(obj.list);
     state.price = obj.price;
     state.dist = obj.dist;
@@ -47,11 +48,17 @@ const mutations = {
   },
   changeShow(state,show){
     state.show = show;
+  },
+  changeList(state,obj){
+    state.zhutilsit = state.zhutilsit.concat(obj.listtemp);
   }
 };
 const actions = {
   changeAllFooter(context,obj){
     context.commit('changeAll',obj)
+  },
+  changeListFooter(context,obj){
+    context.commit('changeList',obj)
   },
   changeShowFooter(context,show){
     context.commit('changeShow',show)

@@ -5,11 +5,7 @@
       <Icon type="ios-heart" />
       推荐条件
     </p>
-    <a slot="extra" @click.prevent="changeLimit">
-      <Icon type="md-color-wand" />
-      清空
-    </a>
-    <Tag type="border" v-for="item in list" :key="item" :name="item" closable color="error" @on-close="handleClose2">{{item}}</Tag>
+    <Tag v-for="item in list" :key="item" :name="item" color="#FFA2D3">{{item}}</Tag>
   </Card>
   <!--</Affix>-->
 </template>
@@ -20,14 +16,17 @@
       }
     },
     methods: {
-      handleClose2 (event, name) {
-        const index = this.list.indexOf(name);
-        this.list.splice(index, 1);
-      }
     },
     computed:{
-      list(){
-        return this.$store.state.zhutilsit
+      list:{
+        get(){
+          return this.$store.state.zhutilsit
+        },
+        set(){
+          var obj = {};
+          obj.listtemp = this.list;
+          this.$store.dispatch('changeListFooter',obj)
+        }
       }
     }
   }
