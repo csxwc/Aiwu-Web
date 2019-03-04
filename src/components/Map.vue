@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header id="headmap"></v-header>
     <v-collapse class="clp"></v-collapse>
     <baidu-map class="map" :center="{lng: 104.06792346, lat: 30.67994285}" :zoom="15" :scroll-wheel-zoom="true">
       <v-card></v-card>
