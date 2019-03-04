@@ -13,6 +13,10 @@
       return {
         columns_rel: [
           {
+            title: '城市',
+            key: 'city'
+          },
+          {
             title: '标题',
             key: 'title',
             render: (h, params) => {
@@ -22,24 +26,31 @@
             }
           },
           {
-            title: '城市',
-            key: 'city'
-          },
-          {
-            title: '房源类型',
-            key: 'type'
+            title: '被租次数',
+            key: 'renttimes'
           },
           {
             title: '价格',
             key: 'price'
           },
           {
-            title: 'Action',
+            title: '操作',
             key: 'action',
             width: 150,
             align: 'center',
             render: (h, params) => {
               return h('div', [
+                h('Button', {
+                  props: {
+                    type: 'primary',
+                    size: 'small'
+                  },
+                  on: {
+                    click: () => {
+
+                    }
+                  }
+                }, '详情'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -50,7 +61,7 @@
                       this.remove(params.index)
                     }
                   }
-                }, '撤回')
+                }, '取消发布')
               ]);
             }
           }

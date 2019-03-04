@@ -1,11 +1,11 @@
 <template>
   <div>
     <Tabs>
-      <TabPane  label="已预订房源" icon="ios-checkbox-outline">
-        <Table size="small" border :columns="columns_booking" :data="data_booking" stripe></Table>
+      <TabPane icon="ios-checkbox-outline" label="已预订房源">
+        <Table :columns="columns_booking" :data="data_booking" border size="small" stripe></Table>
       </TabPane>
-      <TabPane label="预定过的房源" icon="md-checkbox">
-        <Table size="small" border :columns="columns_booked" :data="data_booked" stripe></Table>
+      <TabPane icon="md-checkbox" label="预定过的房源">
+        <Table :columns="columns_booked" :data="data_booked" border size="small" stripe></Table>
       </TabPane>
     </Tabs>
   </div>
@@ -18,10 +18,10 @@
         columns_booking: [
           {
             title: '标题',
-            key: 'title',
+            key: 'housename',
             render: (h, params) => {
               return h('div', [
-                h('strong', params.row.title)
+                h('strong', params.row.housename)
               ]);
             }
           },
@@ -38,7 +38,7 @@
             key: 'starttime'
           },
           {
-            title:'结束时间',
+            title: '结束时间',
             key: 'endtime'
           },
           {
@@ -49,16 +49,16 @@
             render: (h, params) => {
               return h('div', [
                 h('Button', {
-                props: {
-                  type: 'primary',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.detail()
+                  props: {
+                    type: 'primary',
+                    size: 'small'
+                  },
+                  on: {
+                    click: () => {
+                      this.detail()
+                    }
                   }
-                }
-              }, '详情'),
+                }, '详情'),
                 h('Button', {
                   props: {
                     type: 'error',
@@ -78,10 +78,10 @@
         columns_booked: [
           {
             title: '标题',
-            key: 'title',
+            key: 'housename',
             render: (h, params) => {
               return h('div', [
-                h('strong', params.row.title)
+                h('strong', params.row.housename)
               ]);
             }
           },
@@ -98,22 +98,13 @@
             key: 'starttime'
           },
           {
-            title:'结束时间',
+            title: '结束时间',
             key: 'endtime'
           },
         ],
         data_booking: [],
-        data_booked: [
-          {
-            title: '海景房',
-            city: '成都',
-            type: '公寓',
-            starttime:'2000.2.2',
-            endtime:'2002.2.2'
-          },
-        ],
-        userid :'',
-        dataget :[]
+        data_booked: [],
+        userid: '',
       }
 
     },
@@ -121,25 +112,27 @@
       remove(index) {
         this.data_booking.splice(index, 1);
       },
-      detail(index){
+      detail(index) {
         this.$router.push("/home")
       },
     },
-    mounted(){
-      // this.$axios
-      //   .post('localhost:8888/rent/getnotused',{'userid': 0})
-      //   .then(response=>{
-      //     console.log(response)
-      //   })
-      //   .catch(error=>{
-      //     console.log(error)
-      //   })
+    mounted() {
       this.$axios
-        .post('http://localhost:8888/rent/getnotused',{userid: 1})
-        .then(response=>{
-          console.log(response.data)
+        .post('http://localhost:8888/rent/getnotused', {userid: 1})
+        .then(response => {
+          console.log(response.data);
+          this.data_booking = response.data
         })
-        .catch(error=>{
+        .catch(error => {
+          console.log(error)
+        });
+      this.$axios
+        .post('http://localhost:8888/rent/getused', {userid: 1})
+        .then(response => {
+          console.log(response.data);
+          this.data_booked = response.data
+        })
+        .catch(error => {
           console.log(error)
         })
     },
@@ -147,4 +140,5 @@
 </script>
 
 <style>
+  h{}
 </style>
