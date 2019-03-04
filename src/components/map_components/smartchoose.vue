@@ -62,7 +62,6 @@
     methods: {
       ok () {
         this.$Message.info('Clicked ok');
-        // this.$store.state.zhutilsit = this.model10
         var obj = {};
         obj.list = this.model10;
         obj.price = this.price;
