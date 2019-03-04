@@ -124,7 +124,7 @@
         this.$refs[name].resetFields();
       },
       submit(){
-        this.$axios.post('http://182.149.197.247:8888/user/register', {
+        this.$axios.post('http://localhost:8888/user/register', {
           email: this.formValidate.mail,
           password: this.formValidate.passwd,
           code: this.formValidate.code,
@@ -141,7 +141,7 @@
           });
       },
       send(){
-        this.$axios.post('http://182.149.197.247:8888/user/register/mail',{
+        this.$axios.post('http://localhost:8888/user/register/mail',{
           email:this.formValidate.mail
         })
           .then((response) => {

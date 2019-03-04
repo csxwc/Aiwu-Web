@@ -5,7 +5,7 @@
     <baidu-map class="map" :center="{lng: 104.06792346, lat: 30.67994285}" :zoom="15" :scroll-wheel-zoom="true">
       <v-card></v-card>
       <bm-marker v-for="item in positions" :key="item.id" :position="item" :dragging="false"
-                 animation="BMAP_ANIMATION_BOUNCE" @click="showdetail">
+                 animation="BMAP_ANIMATION_BOUNCE" @click="showdetail(item)">
 
       </bm-marker>
       <bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"
@@ -49,8 +49,9 @@
         this.center.lat = e.point.lat
         console.log(this.center)
       },
-      showdetail() {
-        this.$refs.showdetail.value4 = true
+      showdetail(item) {
+        this.$refs.showdetail.value4 = true;
+        this.$refs.showdetail.position = item;
       }
     },
     mounted() {
