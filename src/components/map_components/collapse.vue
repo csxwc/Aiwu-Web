@@ -72,15 +72,15 @@
         money:[20,50],
         cityList: [
           {
-            value: 1,
+            value: '普通公寓',
             label: '普通公寓'
           },
           {
-            value: 2,
+            value: '整套公寓',
             label: '整套公寓'
           },
           {
-            value: 3,
+            value: '整间阁楼',
             label: '整间阁楼'
           }
         ],
@@ -92,7 +92,23 @@
 
       },
       choose(){
-
+        this.$axios.post('http://localhost:8888/house/find', {
+          city:"西安",
+          type:this.model1,
+          guest:this.people,
+          bedroom:this.room,
+          bed:this.bed,
+          toilet:this.bathroom,
+          minprice:this.money[0],
+          maxprice:this.money[1]
+        })
+          .then((response) => {
+            console.log(response);
+            console.log(this.$parent.center)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       },
       smartshow(){
         this.$store.dispatch('changeShowFooter',true);

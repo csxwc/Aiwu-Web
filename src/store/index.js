@@ -10,7 +10,8 @@ const state={//要设置的全局访问的state对象
   room:50,
   travel:50,
   seen:50,
-  show:false
+  show:false,
+  city:''
   //要设置的初始属性值
 };
 const getters = {   //实时监听state值的变化(最新状态)
@@ -34,6 +35,9 @@ const getters = {   //实时监听state值的变化(最新状态)
   },
   getShow(){
     return state.show
+  },
+  getCity(){
+    return state.city
   }
 };
 const mutations = {
@@ -51,6 +55,9 @@ const mutations = {
   },
   changeList(state,obj){
     state.zhutilsit = state.zhutilsit.concat(obj.listtemp);
+  },
+  changeCity(state,city){
+    state.city = city;
   }
 };
 const actions = {
@@ -62,6 +69,9 @@ const actions = {
   },
   changeShowFooter(context,show){
     context.commit('changeShow',show)
+  },
+  changeCityFooter(context,city){
+    context.commit('changeCity',city)
   }
 }
 

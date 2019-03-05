@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu mode="horizontal" :theme="'dark'">
+    <Menu mode="horizontal" :theme="'dark'" style="background-color: aliceblue">
       <MenuItem name="1" style="width: 20%">
         <Select @on-change="selectChange($event)"
                 placeholder="请选择房源地..."
@@ -16,16 +16,22 @@
       </MenuItem>
       <div style="float: right;">
         <MenuItem style="padding-left: 0" to="/home" name="3">
+          <div style="color: black">
           <Icon type="md-home"/>
           主页
+          </div>
         </MenuItem >
         <MenuItem style="padding-left: 0" name="4">
+          <div style="color: black">
           <Icon type="md-compass"/>
           帮助
+          </div>
         </MenuItem>
         <MenuItem style="padding-left: 0" to="/loginpage" name="5">
+          <div style="color: black">
           <Icon type="md-contact"/>
           登录
+          </div>
         </MenuItem>
       </div>
 
@@ -184,14 +190,15 @@
     },
     methods: {
       selectChange(event) {
-        console.log(event);
+        // console.log(event);
       },
       sendLocation() {
         if (this.selected === '') {
           this.$Message.warning('请选择一个城市！');
         } else {
-          VueEvent.$emit('location', this.selected)
-          this.$router.push('/map')
+          // VueEvent.$emit('location', this.selected)
+          this.$router.push('/map');
+          this.$store.dispatch('changeCityFooter',this.selected);
         }
 
       }

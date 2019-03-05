@@ -27,6 +27,6 @@
 </script>
 <style>
   .imgc{
-    height: 400px;
+    height: 500px;
   }
 </style>

@@ -24,8 +24,8 @@
                         <Icon type="md-home"/>
                         主页
                       </MenuItem >
-                      <MenuItem style="padding-left: 0" name="4">
-                        <Icon type="md-compass"/>
+                      <MenuItem style="padding-left: 0" name="4" >
+                        <Icon type="md-compass" @click="value1 = true"/>
                         帮助
                       </MenuItem>
                       <MenuItem style="padding-left: 0" to="/loginpage" name="5">
@@ -49,6 +49,21 @@
 
 
         </Layout>
+      <Drawer :closable="false" width="640" v-model="value1">
+        <p :style="pStyle">User Profile</p>
+        <p :style="pStyle">Personal</p>
+        <div class="demo-drawer-profile">
+        </div>
+        <Divider />
+        <p :style="pStyle">Company</p>
+        <div class="demo-drawer-profile">
+
+        </div>
+        <Divider />
+        <p :style="pStyle">Contacts</p>
+        <div class="demo-drawer-profile">
+        </div>
+      </Drawer>
     </div>
 </template>
 
@@ -225,7 +240,15 @@ export default {
               title:'司云崖',
               src:'http://pal5q.roogames.com/pal5q/pal5q/zl/images/cj/cj_6d.jpg'
             }
-          ]
+          ],
+          value1: false,
+          pStyle: {
+            fontSize: '16px',
+            color: 'rgba(0,0,0,0.85)',
+            lineHeight: '24px',
+            display: 'block',
+            marginBottom: '16px'
+          }
 
         }
     },
@@ -233,20 +256,24 @@ export default {
     components:{
         'v-header':Header,
         'v-sugCard':SuggestCard,
-        'v-carousel':Carousel
+        'v-carousel':Carousel,
     },
     methods:{
       selectChange(event) {
-        console.log(event);
+        // console.log(event);
       },
       sendLocation() {
         if (this.selected === '') {
           this.$Message.warning('请选择一个城市！');
         } else {
-          VueEvent.$emit('location', this.selected)
+          // VueEvent.$emit('location', this.selected)
           this.$router.push('/map')
+          this.$store.dispatch('changeCityFooter',this.selected);
         }
 
+      },
+      open(){
+        this.value1 = true;
       }
     },
   mounted() {
@@ -268,6 +295,12 @@ export default {
   position: absolute;
   width: 100vw;
   background: rgba(255,255,255,0);
+}
+.demo-drawer-profile{
+  font-size: 14px;
+}
+.demo-drawer-profile .ivu-col{
+  margin-bottom: 12px;
 }
 
 </style>
