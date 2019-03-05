@@ -80,7 +80,6 @@
       }
     },
     mounted() {
-      this.$axios.post("http://localhost:8888/rent/getusedata",{userid:1})
     }
   }
 </script>

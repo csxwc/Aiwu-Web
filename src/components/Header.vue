@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu mode="horizontal" :theme="'dark'" style="background-color: aliceblue">
+    <Menu :theme="'dark'" mode="horizontal" style="background-color: aliceblue">
       <MenuItem name="1" style="width: 20%">
         <Select @on-change="selectChange($event)"
                 placeholder="请选择房源地..."
@@ -15,20 +15,23 @@
         <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
       </MenuItem>
       <div style="float: right;">
-        <MenuItem style="padding-left: 0" to="/home" name="3">
+        <MenuItem name="3" style="padding-left: 0" to="/home">
           <div style="color: black">
           <Icon type="md-home"/>
           主页
           </div>
         </MenuItem >
-        <MenuItem style="padding-left: 0" name="4">
+        <MenuItem name="4" style="padding-left: 0">
           <div style="color: black">
           <Icon type="md-compass"/>
           帮助
           </div>
         </MenuItem>
-        <MenuItem style="padding-left: 0" to="/loginpage" name="5">
-          <div style="color: black">
+        <MenuItem name="5" style="padding-left: 0">
+          <div style="color: #000;" v-if="isLogged">
+            <Icon type="md-contact"/>
+            我的</div>
+          <div style="color: black" v-else>
           <Icon type="md-contact"/>
           登录
           </div>
@@ -201,6 +204,11 @@
           this.$store.dispatch('changeCityFooter',this.selected);
         }
 
+      }
+    },
+    computed:{
+      isLogged(){
+        return localStorage.getItem("logged-in") === 'true';
       }
     }
   }

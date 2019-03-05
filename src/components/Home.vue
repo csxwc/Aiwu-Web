@@ -28,9 +28,14 @@
                         <Icon type="md-compass" @click="value1 = true"/>
                         帮助
                       </MenuItem>
-                      <MenuItem style="padding-left: 0" to="/loginpage" name="5">
-                        <Icon type="md-contact"/>
-                        登录
+                      <MenuItem style="padding-left: 0" :to="this.direction" name="5">
+                        <div  v-if="isLogged">
+                          <Icon type="md-contact"/>
+                          我的</div>
+                        <div v-else>
+                          <Icon type="md-contact"/>
+                          登录
+                        </div>
                       </MenuItem>
                     </div>
 
@@ -248,7 +253,7 @@ export default {
             lineHeight: '24px',
             display: 'block',
             marginBottom: '16px'
-          }
+          },
 
         }
     },
@@ -280,11 +285,20 @@ export default {
       var logged_in = localStorage.getItem("logged-in");
       if(logged_in==="true"){
         console.log("我登录了");
+
       }
       else{
         localStorage.setItem("logged-in", false);
         console.log("我还没登录");
       }
+  },
+  computed:{
+    isLogged(){
+      return localStorage.getItem("logged-in") === 'true';
+    },
+    direction(){
+      return (localStorage.getItem("logged-in") === 'true')? '/user': '/loginpage'
+    }
   }
 }
 </script>

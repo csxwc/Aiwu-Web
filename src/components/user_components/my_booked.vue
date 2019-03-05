@@ -106,7 +106,6 @@
         data_booked: [],
         userid: '',
       }
-
     },
     methods: {
       remove(index) {

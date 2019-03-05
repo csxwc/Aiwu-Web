@@ -12,7 +12,7 @@ import loginpage from '../components/loginpage.vue'
 import signuppage from '../components/signuppage.vue'
 
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -34,11 +34,11 @@ export default new Router({
     { path: '/user',
       component: User,
       children: [
-        { path:'my_booked', component:my_booked} ,
-        { path:'my_info', component:my_info},
-        { path:'my_preference', component:my_preference },
-        { path:'my_release', component:my_release },
-        { path:'/user', redirect:'my_booked'}
+        { path:'my_booked/:userid', component:my_booked},
+        { path:'my_info/:userid', component:my_info},
+        { path:'my_preference/:userid', component:my_preference },
+        { path:'my_release/:userid', component:my_release },
+        { path:'/user', redirect:'my_booked/:userid'}
       ]
     },
   ]
