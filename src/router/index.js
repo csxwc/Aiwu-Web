@@ -38,7 +38,6 @@ export default new Router({
         { path:'my_info/:userid', component:my_info},
         { path:'my_preference/:userid', component:my_preference },
         { path:'my_release/:userid', component:my_release },
-        { path:'/user', redirect:'my_booked/:userid'}
       ]
     },
   ]

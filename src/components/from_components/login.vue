@@ -38,13 +38,14 @@
     methods: {
       handleSubmit(name) {
         this.$axios.post('http://localhost:8888/user/check',{
-          username:this.formInline.user,
+          email:this.formInline.user,
           password:this.formInline.password
         })
           .then((response) => {
             console.log(response);
             if(response.data.status === "success"){
-              localStorage.setItem("logged-in", true)
+              localStorage.setItem("logged-in", true);
+              localStorage.setItem("userid", response.data.msg);
             }
             else {
               localStorage.setItem("logged-in", false)

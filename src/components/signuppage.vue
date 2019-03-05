@@ -47,8 +47,8 @@
       'v-signup':signup
     },
     methods:{
-    }
 
+    }
   }
 </script>
 <style lang="scss">

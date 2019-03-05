@@ -28,7 +28,7 @@
                         <Icon type="md-compass" @click="value1 = true"/>
                         帮助
                       </MenuItem>
-                      <MenuItem style="padding-left: 0" :to="this.direction" name="5">
+                      <MenuItem style="padding-left: 0" :to="this.redirect" name="5">
                         <div  v-if="isLogged">
                           <Icon type="md-contact"/>
                           我的</div>
@@ -296,8 +296,8 @@ export default {
     isLogged(){
       return localStorage.getItem("logged-in") === 'true';
     },
-    direction(){
-      return (localStorage.getItem("logged-in") === 'true')? '/user': '/loginpage'
+    redirect(){
+      return localStorage.getItem("logged-in") === 'true' ? "/user/my_booked/"+localStorage.getItem("userid") : "/loginpage";
     }
   }
 }

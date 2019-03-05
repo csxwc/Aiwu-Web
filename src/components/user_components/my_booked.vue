@@ -117,18 +117,18 @@
     },
     mounted() {
       this.$axios
-        .post('http://localhost:8888/rent/getnotused', {userid: 1})
+        .post('http://localhost:8888/rent/getnotused', {userid: parseInt(this.$route.params.userid)})
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.data_booking = response.data
         })
         .catch(error => {
           console.log(error)
         });
       this.$axios
-        .post('http://localhost:8888/rent/getused', {userid: 1})
+        .post('http://localhost:8888/rent/getused', {userid: parseInt(this.$route.params.userid)})
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.data_booked = response.data
         })
         .catch(error => {

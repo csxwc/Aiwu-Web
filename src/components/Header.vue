@@ -27,13 +27,13 @@
           帮助
           </div>
         </MenuItem>
-        <MenuItem name="5" style="padding-left: 0">
+        <MenuItem name="5" style="padding-left: 0" :to="this.redirect">
           <div style="color: #000;" v-if="isLogged">
             <Icon type="md-contact"/>
             我的</div>
           <div style="color: black" v-else>
-          <Icon type="md-contact"/>
-          登录
+            <Icon type="md-contact"/>
+            登录
           </div>
         </MenuItem>
       </div>
@@ -209,6 +209,9 @@
     computed:{
       isLogged(){
         return localStorage.getItem("logged-in") === 'true';
+      },
+      redirect(){
+        return localStorage.getItem("logged-in") === 'true' ? "/user/my_booked/"+localStorage.getItem("userid") : "/loginpage";
       }
     }
   }
