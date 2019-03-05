@@ -70,6 +70,7 @@
         bed:0,
         bathroom:0,
         money:[0,4000],
+        model1: '',
         cityList: [
           {
             value: '普通公寓',
@@ -83,8 +84,7 @@
             value: '整间阁楼',
             label: '整间阁楼'
           }
-        ],
-        model1: ''
+        ]
       }
     },
     methods:{
@@ -95,15 +95,21 @@
         return val;
       },
       choose(){
+        if(!this.switch1){this.model1 = null};
+        if(!this.switch2){this.people = -1};
+        if(!this.switch3){this.room = -1};
+        if(!this.switch4){this.bed = -1};
+        if(!this.switch5){this.bathroom = -1};
+        if(!this.switch6){this.money = [-1,-1]};
         this.$axios.post('http://localhost:8888/house/find', {
-          city:"上海",
-          type:null,
-          guest:-1,
-          bedroom:-1,
-          bed:-1,
-          toilet:-1,
-          minprice:-1,
-          maxprice:-1
+          city:this.$store.state.city,
+          type:this.model1,
+          guest:this.people,
+          bedroom:this.room,
+          bed:this.bed,
+          toilet:this.bathroom,
+          minprice:this.money[0],
+          maxprice:this.money[1]
         })
           .then((response) => {
             console.log(response);
@@ -116,6 +122,12 @@
           .catch((error) => {
             console.log(error);
           });
+        if(!this.switch1){this.model1 = ''};
+        if(!this.switch2){this.people = 0};
+        if(!this.switch3){this.room = 0};
+        if(!this.switch4){this.bed = 0};
+        if(!this.switch5){this.bathroom = 0};
+        if(!this.switch6){this.money = [0,4000]};
       },
       smartshow(){
         this.$store.dispatch('changeShowFooter',true);

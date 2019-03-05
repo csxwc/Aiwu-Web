@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu :theme="'dark'" mode="horizontal" style="background-color: aliceblue">
+    <Menu :theme="'dark'" mode="horizontal" style="background-color: white">
       <MenuItem name="1" style="width: 20%">
         <Select @on-change="selectChange($event)"
                 placeholder="请选择房源地..."
