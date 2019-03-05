@@ -43,7 +43,7 @@
       价格区间
       <i-switch  size="small" class="choose" v-model="switch6" @on-change="change" />
       <p slot="content">
-        <Slider v-model="money" range></Slider>
+        <Slider v-model="money" range :min="0" :max="4000" :tip-format="format"></Slider>
         最低价：{{money[0]}}<br>
         最高价：{{money[1]}}
       </p>
@@ -69,7 +69,7 @@
         room:0,
         bed:0,
         bathroom:0,
-        money:[20,50],
+        money:[0,4000],
         cityList: [
           {
             value: '普通公寓',
@@ -91,9 +91,12 @@
       change(){
 
       },
+      format (val) {
+        return val;
+      },
       choose(){
         this.$axios.post('http://localhost:8888/house/find', {
-          city:"西安",
+          city:"成都",
           type:this.model1,
           guest:this.people,
           bedroom:this.room,
