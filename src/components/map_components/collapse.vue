@@ -96,18 +96,22 @@
       },
       choose(){
         this.$axios.post('http://localhost:8888/house/find', {
-          city:"成都",
-          type:this.model1,
-          guest:this.people,
-          bedroom:this.room,
-          bed:this.bed,
-          toilet:this.bathroom,
-          minprice:this.money[0],
-          maxprice:this.money[1]
+          city:"上海",
+          type:null,
+          guest:-1,
+          bedroom:-1,
+          bed:-1,
+          toilet:-1,
+          minprice:-1,
+          maxprice:-1
         })
           .then((response) => {
             console.log(response);
-            console.log(this.$parent.center)
+            console.log(this.$parent.center);
+            this.$parent.positions = [];
+            for (var i= response.data.length-1; i >= 0; i--) {
+              this.$parent.positions.push({lng:response.data[i].weidu,lat:response.data[i].jingdu});
+            }
           })
           .catch((error) => {
             console.log(error);
