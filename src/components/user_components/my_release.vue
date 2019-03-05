@@ -1,9 +1,9 @@
 <template>
   <div>
-    <strong style="font-size: 20px">我的发布</strong>
-    <br>
-    <br>
-    <Table size="small" border :columns="columns_rel" :data="data_rel" stripe></Table>
+    <Tabs value="name1">
+      <TabPane label="我的发布" icon="ios-send" name="name1"><Table size="small" border :columns="columns_rel" :data="data_rel" stripe></Table></TabPane>
+    </Tabs>
+
   </div>
 </template>
 
@@ -66,20 +66,21 @@
             }
           }
         ],
-        data_rel: [
-          {
-            title: '海景房',
-            city: '成都',
-            type: '公寓',
-            price: '8888RMB'
-          },
-        ]
+        data_rel: [{
+          city:'西安',
+          title:'一个海景房',
+          renttimes:4,
+          price:'123456RMB'
+        }]
       }
     },
     methods: {
       remove(index) {
         this.data_rel.splice(index, 1);
       }
+    },
+    mounted() {
+      this.$axios.post("http://localhost:8888/rent/getusedata",{userid:1})
     }
   }
 </script>

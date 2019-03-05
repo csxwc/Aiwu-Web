@@ -43,6 +43,13 @@
         })
           .then((response) => {
             console.log(response);
+            if(response.data.status === "success"){
+              localStorage.setItem("logged-in", true)
+            }
+            else {
+              localStorage.setItem("logged-in", false)
+            }
+
           })
           .catch(function (error) {
             console.log(error);

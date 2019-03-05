@@ -1,9 +1,9 @@
 <template>
   <div>
-    <strong style="font-size: 20px">我的发布</strong>
-    <br>
-    <br>
-    <Table size="small" border :columns="columns_prefer" :data="data_prefer" stripe></Table>
+    <Tabs value="name1">
+      <TabPane icon="md-star" label="我的收藏" name="name1"><Table size="small" border :columns="columns_prefer" :data="data_prefer" stripe></Table></TabPane>
+    </Tabs>
+
   </div>
 </template>
 

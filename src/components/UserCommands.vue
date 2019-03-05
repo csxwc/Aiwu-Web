@@ -26,7 +26,7 @@
               </MenuItem>
             </MenuGroup>
           </Menu>
-          <Button type="error" long icon="md-backspace" to="/home">退出登录</Button>
+          <Button type="error" long icon="md-backspace" @click="loggoff">退出登录</Button>
         </Col>
         <Col span="21">
           <router-view></router-view>
@@ -59,12 +59,16 @@
           default:
             break;
         }
-        //
+      },
+      loggoff(){
+        localStorage.setItem("logged-in", false);
+        this.$router.push("/home");
       }
     },
     components: {
       'v-header': Header,
-    }
+    },
+
   }
 </script>
 
