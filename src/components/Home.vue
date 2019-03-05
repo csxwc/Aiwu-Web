@@ -30,7 +30,7 @@
                       </MenuItem>
                       <MenuItem style="padding-left: 0" :to="this.redirect" name="5">
                         <div  v-if="isLogged">
-                          <Icon type="md-contact"/>
+                          <Icon type="md-contact" to="/user/my_booked/"/>
                           我的</div>
                         <div v-else>
                           <Icon type="md-contact"/>

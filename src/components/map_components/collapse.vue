@@ -43,7 +43,7 @@
       价格区间
       <i-switch  size="small" class="choose" v-model="switch6" @on-change="change" />
       <p slot="content">
-        <Slider v-model="money" range></Slider>
+        <Slider v-model="money" range :min="0" :max="4000" :tip-format="format"></Slider>
         最低价：{{money[0]}}<br>
         最高价：{{money[1]}}
       </p>
@@ -69,7 +69,7 @@
         room:0,
         bed:0,
         bathroom:0,
-        money:[20,50],
+        money:[0,4000],
         cityList: [
           {
             value: '普通公寓',
@@ -91,20 +91,27 @@
       change(){
 
       },
+      format (val) {
+        return val;
+      },
       choose(){
         this.$axios.post('http://localhost:8888/house/find', {
-          city:"西安",
-          type:this.model1,
-          guest:this.people,
-          bedroom:this.room,
-          bed:this.bed,
-          toilet:this.bathroom,
-          minprice:this.money[0],
-          maxprice:this.money[1]
+          city:"上海",
+          type:null,
+          guest:-1,
+          bedroom:-1,
+          bed:-1,
+          toilet:-1,
+          minprice:-1,
+          maxprice:-1
         })
           .then((response) => {
             console.log(response);
-            console.log(this.$parent.center)
+            console.log(this.$parent.center);
+            this.$parent.positions = [];
+            for (var i= response.data.length-1; i >= 0; i--) {
+              this.$parent.positions.push({lng:response.data[i].weidu,lat:response.data[i].jingdu});
+            }
           })
           .catch((error) => {
             console.log(error);
