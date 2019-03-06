@@ -64,6 +64,16 @@
           .catch((error) => {
             console.log(error);
           });
+        this.$axios.post('http://localhost:8888/rent/getusedate', {
+          houseid:this.messages[key].id
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
       }
     },
     mounted() {

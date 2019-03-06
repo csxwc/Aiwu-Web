@@ -25,6 +25,7 @@
       <Divider />
       <p :style="pStyle">最多可住{{msg.guest}}人    {{msg.room}}间卧室    {{msg.bed}}张床    {{msg.toilet}}间卫生间      ¥{{msg.price}}/晚</p>
       <div class="demo-drawer-profile">
+        <DatePicker type="date" multiple :open="true" placement="bottom-start" placeholder="Select date" style="width: 218px"></DatePicker>
       </div>
     </Drawer>
   </div>
