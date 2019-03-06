@@ -22,6 +22,7 @@
 </template>
 <script>
   export default {
+    name:'v-carouse'
 
   }
 </script>
