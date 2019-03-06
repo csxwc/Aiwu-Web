@@ -11,8 +11,6 @@
             <AnchorLink href="#detail" title="详情"/>
             <AnchorLink href="#date" title="可定日期"/>
             <AnchorLink href="#position" title="位置"/>
-            <AnchorLink href="#needtoknow" title="须知"/>
-            <AnchorLink href="#hostmessage" title="房主信息"/>
           </Anchor>
         </Col>
         <Col span="15">
@@ -71,30 +69,23 @@
 
           <br>
           <br>
-
-          <div id="needtoknow">
-            <div><strong style="font-size: 25px;">入住须知</strong></div>
-            <hr>
-            <br><br><br><br><br><br><br><br><br>
-          </div>
-
-          <br>
-          <br>
-
-          <div id="hostmessage">
-            <div><strong style="font-size: 25px;">房主信息</strong></div>
-            <hr>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br>
-          </div>
         </Col>
         <Col span="7">
           <Affix :offset-top="20">
-            <Card :bordered="false" bordered>
-              <p slot="title">Borderless card</p>
-              <p>Content of card</p>
-              <p>Content of card</p>
-              <p>Content of card</p>
+            <Card :bordered="false" bordered style="width: 100%">
+              <p slot="title">¥{{this.house.price}}每晚</p>
+              <p>日期:</p>
+              <DatePicker type="daterange" confirm placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+              <br>
+              <br>
+              <p>人数:</p>
+              <InputNumber :max="house.guest" :min="1" :step="1"></InputNumber>人
+              <br>
+              <br>
+              <br>
+              <Button :type="'primary'" style="width: 80%">预定</Button>
             </Card>
+            <BackTop></BackTop>
 
           </Affix>
         </Col>
