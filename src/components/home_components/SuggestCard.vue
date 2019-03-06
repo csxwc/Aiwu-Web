@@ -1,9 +1,10 @@
 <template>
-  <div >
-    <img :src="src" alt="" width="100%" height="100%" @click="showDetail">
+  <div class="suggest">
+    <img :src="src" alt="" width="100%" height="100%;">
     <br>
     <div><strong >{{title}}</strong></div>
-    <div v-if="detail">详细信息</div>
+    <Button type="primary" @click="change">{{text}}</Button>
+    <div v-if="show">这是详细信息，很长的哦</div>
   </div>
 </template>
 
@@ -11,7 +12,7 @@
   export default {
     data() {
       return {
-        detail: false
+        show:false,
       }
     },
     props: {
@@ -19,13 +20,20 @@
       'title':null
     },
     methods:{
-      showDetail(){
-        this.detail = !this.detail;
+      change(){
+        this.show = !this.show;
+      }
+    },
+    computed:{
+      text(){
+        return this.show ? "隐藏详情":"显示详情";
       }
     }
   }
 </script>
 
-<style scoped>
-
+<style>
+.suggest{
+  text-align: left;
+  margin: 20px;}
 </style>

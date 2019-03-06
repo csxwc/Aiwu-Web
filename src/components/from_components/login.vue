@@ -46,6 +46,7 @@
             if(response.data.status === "success"){
               localStorage.setItem("logged-in", true);
               localStorage.setItem("userid", response.data.msg);
+              this.$router.push("/home");
             }
             else {
               localStorage.setItem("logged-in", false)

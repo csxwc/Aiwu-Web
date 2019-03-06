@@ -10,6 +10,7 @@ import my_release from '../components/user_components/my_release'
 import loginpage from '../components/loginpage.vue'
 
 import signuppage from '../components/signuppage.vue'
+import HouseInfo from "../components/HouseInfo";
 
 
 Vue.use(Router);
@@ -24,20 +25,22 @@ export default new Router({
     {
       path: "/", redirect: '/home'
     },
-    { path: '/map', component: mapBuild},
+    {path: '/map', component: mapBuild},
 
-    { path: '/loginpage', component: loginpage},
-    { path: '/signuppage', component: signuppage},
+    {path: '/loginpage', component: loginpage},
+    {path: '/signuppage', component: signuppage},
+    {path: '/houseinfo', component: HouseInfo},
 
-    { path: '*', redirect :'/home'},
+    {path: '*', redirect: '/home'},
 
-    { path: '/user',
+    {
+      path: '/user',
       component: User,
       children: [
-        { path:'my_booked/:userid', component:my_booked},
-        { path:'my_info/:userid', component:my_info},
-        { path:'my_preference/:userid', component:my_preference },
-        { path:'my_release/:userid', component:my_release },
+        {path: 'my_booked/:userid', component: my_booked},
+        {path: 'my_info/:userid', component: my_info},
+        {path: 'my_preference/:userid', component: my_preference},
+        {path: 'my_release/:userid', component: my_release},
       ]
     },
   ]

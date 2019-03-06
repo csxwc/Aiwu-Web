@@ -68,6 +68,16 @@
       myinfo(){
         return '/user/my_info/'+this.$route.params.userid;
       }
+    },
+    mounted() {
+      var status = localStorage.getItem("logged-in");
+      if(status=='false'){
+        this.$Message.warning('您没有登录，请登录');
+        this.$router.push('/loginpage');
+      }
+      else{
+        console.log("user commands");
+      }
     }
 
   }

@@ -43,9 +43,9 @@
                     <v-carousel >
                     </v-carousel>
                 </div>
-                <div style="width: 100%">
-                  <div style="font-size:40px;text-align: center"><strong>精品推荐</strong></div>
-                  <Row v-for="(row,row_index) in 2":key="row.id" :gutter="60" style="text-align: center">
+                <div style="width: 80%; text-align: center;margin:0 auto;">
+                  <div style="font-size:40px;text-align: center;"><strong>精品推荐</strong></div>
+                  <Row  type="flex" v-for="(row,row_index) in 2":key="row.id" :gutter="60" style="" align="bottom">
                     <Col span="8" push="0" v-for="(col,col_index) in 3":key="col.id"><v-sugCard
                       :src='infoList[row_index*3+col_index].src'
                       :title="infoList[row_index*3+col_index].title"></v-sugCard></Col>
@@ -272,7 +272,7 @@ export default {
           this.$Message.warning('请选择一个城市！');
         } else {
           // VueEvent.$emit('location', this.selected)
-          this.$router.push('/map')
+          this.$router.push('/map');
           this.$store.dispatch('changeCityFooter',this.selected);
         }
 
