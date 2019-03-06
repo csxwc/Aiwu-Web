@@ -58,13 +58,13 @@
   export default {
     data () {
       return {
-        switch1:true,
-        switch2:true,
-        switch3:true,
-        switch4:true,
-        switch5:true,
-        switch6:true,
-        value1: [1,2,3,4,5,6],
+        switch1:false,
+        switch2:false,
+        switch3:false,
+        switch4:false,
+        switch5:false,
+        switch6:false,
+        value1: [],
         people:0,
         room:0,
         bed:0,
@@ -115,9 +115,12 @@
             console.log(response);
             console.log(this.$parent.center);
             this.$parent.positions = [];
+            this.$parent.messages = [];
             for (var i= response.data.length-1; i >= 0; i--) {
               this.$parent.positions.push({lng:response.data[i].weidu,lat:response.data[i].jingdu});
+              // this.$parent.messages.push(response.data[i]);
             }
+            this.$parent.messages = response.data;
           })
           .catch((error) => {
             console.log(error);
