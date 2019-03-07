@@ -68,6 +68,12 @@
         })
           .then((response) => {
             console.log(response);
+            var datestart = new Date(response.data[0].start);
+            var dateend = new Date(response.data[0].end);
+            this.$refs.showdetail.datestart = datestart
+            this.$refs.showdetail.dateend = dateend
+            console.log(this.$refs.showdetail.datestart.valueOf())
+
           })
           .catch((error) => {
             console.log(error);

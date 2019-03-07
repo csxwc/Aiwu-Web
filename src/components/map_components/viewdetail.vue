@@ -26,8 +26,7 @@
       <Divider />
       <div class="demo-drawer-profile">
         <div class="lef">
-        <DatePicker type="date" multiple
-                    placeholder="查看可居住日期" style="width: 218px"></DatePicker>
+        <DatePicker type="date" multiple :options="options3" placeholder="查看可居住日期" style="width: 218px"></DatePicker>
         </div>
         <div class="rig">
           <ul>
@@ -54,6 +53,13 @@
   export default {
     data () {
       return {
+        datestart:'',
+        dateend:'',
+        options3: {
+          disabledDate :(function (date) {
+            return date.valueOf() < this.datestart.valueOf() || date.valueOf() > this.dateend.valueOf();
+          }).bind(this)
+        },
         value4: false,
         position:{
           lng:0,
