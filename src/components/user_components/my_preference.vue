@@ -30,7 +30,7 @@
             key: 'type'
           },
           {
-            title: '价格',
+            title: '价格(¥)',
             key: 'price'
           },
           {
@@ -60,7 +60,7 @@
             title: '海景房',
             city: '成都',
             type: '公寓',
-            price: '8888RMB'
+            price: '8888'
           },
         ],
       }
@@ -71,7 +71,14 @@
       }
     },
     mounted(){
-
+      this.$axios.get('http://localhost:8888/collection/'+this.$route.params.userid)
+        .then(response=>{
+          console.log(response);
+          this.data_prefer = response.data;
+        })
+        .catch(error=>{
+          console.log(error);
+        })
     },
   }
 </script>

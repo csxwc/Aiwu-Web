@@ -4,7 +4,7 @@
     <v-carouse></v-carouse>
     <br>
     <div style="width: 80%; margin: 0 auto">
-      <Row :gutter="30">
+      <Row :gutter="20">
         <Col span="2">
           <Anchor show-ink style="font-size: 13px" :offset-top=20>
             <AnchorLink href="#detail" title="详情"/>
@@ -12,7 +12,7 @@
             <AnchorLink href="#position" title="位置"/>
           </Anchor>
         </Col>
-        <Col span="15">
+        <Col span="16">
           <div id="detail">
             {{this.house.city}}·{{this.house.type}}
             <div>
@@ -71,21 +71,25 @@
           <br>
           <br>
         </Col>
-        <Col span="7">
+
+        <Col span="6">
           <Affix :offset-top="20">
-            <Card :bordered="false" bordered style="width: 100%">
-              <p slot="title">¥{{this.house.price}}每晚</p>
-              <p>日期:</p>
-              <DatePicker type="daterange" confirm placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
-              <br>
-              <br>
-              <p>人数:</p>
-              <InputNumber :max="house.guest" :min="1" :step="1"></InputNumber>人
-              <br>
-              <br>
-              <br>
-              <Button :type="'primary'" style="width: 80%">预定</Button>
-            </Card>
+            <div style="border:1px solid gray">
+              <Card :bordered="false" style="width: 100%">
+                <p slot="title">¥{{this.house.price}}每晚</p>
+                <p>日期:</p>
+                <DatePicker type="daterange" confirm placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+                <br>
+                <br>
+                <p>人数:</p>
+                <InputNumber :max="house.guest" :min="1" :step="1"></InputNumber>人
+                <br>
+                <br>
+                <br>
+                <Button :type="'primary'" style="width: 80%">预定</Button>
+              </Card>
+            </div>
+
             <BackTop></BackTop>
 
           </Affix>

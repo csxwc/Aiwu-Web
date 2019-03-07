@@ -32,16 +32,21 @@
         <div class="rig">
           <ul>
             <li>
-              <p :style="pStyle"><Icon type="md-body" />最多可住{{msg.guest}}人</p><Divider />
-              <p :style="pStyle"><Icon type="ios-home" />{{msg.room}}间卧室</p><Divider />
-              <p :style="pStyle"><Icon type="md-phone-landscape" />{{msg.bed}}张床</p><Divider />
-              <p :style="pStyle"><Icon type="ios-water" />{{msg.toilet}}间卫生间</p><Divider />
+              <p :style="pStyle"><Icon type="md-body" />最多可住{{msg.guest}}人</p>
+              <hr> <br>
+              <p :style="pStyle"><Icon type="ios-home" />{{msg.room}}间卧室</p>
+              <hr> <br>
+              <p :style="pStyle"><Icon type="md-phone-landscape" />{{msg.bed}}张床</p>
+              <hr> <br>
+              <p :style="pStyle"><Icon type="ios-water" />{{msg.toilet}}间卫生间</p>
+              <hr> <br>
               <p :style="pStyle"><Icon type="logo-yen" />¥{{msg.price}}/晚</p>
+              <hr> <br>
+              <router-link v-bind:to="'/houseinfo/'+this.msg.id">点击查看详细信息</router-link>
             </li>
           </ul>
         </div>
       </div>
-      <router-link>查看详情</router-link>
     </Drawer>
   </div>
 </template>
@@ -57,11 +62,11 @@
         msg:{},
         pic:[],
         pStyle: {
-          fontSize: '16px',
+          fontSize: '15px',
           color: 'rgba(0,0,0,0.85)',
           lineHeight: '24px',
           display: 'block',
-          marginBottom: '16px'
+          marginBottom: '10px'
         },
         pStyle1: {
           fontSize: '20px',
