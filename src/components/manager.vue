@@ -23,7 +23,7 @@
       <Col span="8" class="col-bg">
         <h1 align="center">管理员登陆</h1>
         <div class="row">
-          <v-login></v-login>
+          <v-admilog></v-admilog>
         </div>
         <router-link to="/loginpage" class="aaa"><Icon type="md-contact"/>用户登陆</router-link>
       </Col>
@@ -32,17 +32,16 @@
 </template>
 <script>
   import header from './Header.vue'
-  import login from './from_components/login.vue'
+  import admilogin from './from_components/AdmiLog'
   export default {
     data(){
       return{
-        userID:'',
-        password:''
+
       }
     },
     components:{
       'v-header':header,
-      'v-login':login
+      'v-admilog':admilogin
     },
     methods:{
       submit(){

@@ -11,18 +11,6 @@
       </Input>
     </FormItem>
     <FormItem>
-      <RadioGroup v-model="userType">
-        <Radio label="user">
-          <Icon type="ios-contact" />
-          <span>用户</span>
-        </Radio>
-        <Radio label="manager">
-          <Icon type="ios-construct" />
-          <span>管理员</span>
-        </Radio>
-      </RadioGroup>
-    </FormItem>
-    <FormItem>
       <Button type="primary" @click="handleSubmit('formInline')" style="width: 100%">Signin</Button>
     </FormItem>
   </Form>
@@ -31,7 +19,6 @@
   export default {
     data () {
       return {
-        userType:'user',
         formInline: {
           user: '',
           password: ''
