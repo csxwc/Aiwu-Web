@@ -57,10 +57,10 @@
             <hr>
             <br>
             <baidu-map class="map"
-                       :center="{lng: house.weidu, lat: house.jingdu}"
+                       :center="position"
                        :zoom="15" style="height: 300px;"
                        :scroll-wheel-zoom="true">
-              <bm-marker  :position="{lng: house.weidu, lat: house.jingdu}" :dragging="false" animation="BMAP_ANIMATION_BOUNCE" >
+              <bm-marker  :position="position" :dragging="false" animation="BMAP_ANIMATION_BOUNCE" >
 
               </bm-marker>
             </baidu-map>
@@ -104,6 +104,10 @@
     data() {
       return {
         house:{},
+        position:{
+          lng:'',
+          lat:''
+        }
       }
     },
     components: {
@@ -118,7 +122,10 @@
       this.$axios
         .post('http://localhost:8888/house/getallinfo', {houseid: 314453})
         .then(response => {
+          console.log(response);
           this.house=response.data;
+          this.position.lat = response.data.jingdu;
+          this.position.lng = response.data.weidu;
         })
         .catch(error => {
           console.log(error)
