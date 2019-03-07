@@ -120,7 +120,7 @@
 
     mounted() {
       this.$axios
-        .post('http://localhost:8888/house/getallinfo', {houseid: 314453})
+        .post('http://localhost:8888/house/getallinfo', {houseid:parseInt(this.$route.params.houseid)})
         .then(response => {
           console.log(response);
           this.house=response.data;

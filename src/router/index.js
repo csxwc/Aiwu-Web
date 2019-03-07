@@ -31,7 +31,7 @@ export default new Router({
     {path: '/loginpage', component: loginpage},
     {path: '/signuppage', component: signuppage},
     {path: '/manager', component: Manager},
-    {path: '/houseinfo', component: HouseInfo},
+    {path: '/houseinfo/:houseid', component: HouseInfo},
 
     {path: '*', redirect: '/home'},
 
