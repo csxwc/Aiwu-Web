@@ -6,7 +6,7 @@
     <div style="width: 80%; margin: 0 auto">
       <Row :gutter="20">
         <Col span="2">
-          <Anchor show-ink style="font-size: 13px" :offset-top=20>
+          <Anchor :offset-top=20 show-ink style="font-size: 13px">
             <AnchorLink href="#detail" title="详情"/>
             <AnchorLink href="#date" title="可定日期"/>
             <AnchorLink href="#position" title="位置"/>
@@ -17,7 +17,8 @@
             {{this.house.city}}·{{this.house.type}}
             <div>
               <strong style="font-size: 25px;">{{this.house.name}}</strong>
-              <Button type="primary" icon="md-add" style="float: right;">点击收藏</Button>
+              <Button icon="md-add" style="float: right;" @click="cancel"  type="primary" v-if="preferred">取消收藏</Button>
+              <Button icon="md-add" style="float: right;"  type="primary" v-else>点击收藏</Button>
             </div>
             <hr>
             <ul class="info">
@@ -57,15 +58,14 @@
             <div><strong style="font-size: 25px;">位置信息</strong></div>
             <hr>
             <br>
-            <baidu-map class="map"
-                       :center="position"
-                       :zoom="15" style="height: 300px;"
-                       :scroll-wheel-zoom="true">
-              <bm-marker  :position="position" :dragging="false" animation="BMAP_ANIMATION_BOUNCE" >
+            <baidu-map :center="position"
+                       :scroll-wheel-zoom="true"
+                       :zoom="15" class="map"
+                       style="height: 300px;">
+              <bm-marker :dragging="false" :position="position" animation="BMAP_ANIMATION_BOUNCE">
 
               </bm-marker>
             </baidu-map>
-            <br><br><br><br><br><br><br><br><br><br>
           </div>
 
           <br>
@@ -78,11 +78,13 @@
               <Card :bordered="false" style="width: 100%">
                 <p slot="title">¥{{this.house.price}}每晚</p>
                 <p>日期:</p>
-                <DatePicker type="daterange" confirm placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+                <DatePicker confirm placeholder="Select date" placement="bottom-end" style="width: 200px"
+                            type="daterange"></DatePicker>
                 <br>
                 <br>
                 <p>人数:</p>
-                <InputNumber :max="house.guest" :min="1" :step="1"></InputNumber>人
+                <InputNumber :max="house.guest" :min="1" :step="1"></InputNumber>
+                人
                 <br>
                 <br>
                 <br>
@@ -104,33 +106,56 @@
   import Header from '../components/Header'
   import VCarouse from "./home_components/Carousel";
   import Check from "../model/Check";
+  import GetInfo from '../model/GetInfo'
 
   export default {
     name: "HouseInfo",
     data() {
       return {
-        house:{},
-        position:{
-          lng:'',
-          lat:''
+        house: {},
+        position: {
+          lng: '',
+          lat: ''
         },
-        btnPrefrer:'点击收藏'
+        preferred: false,
       }
     },
     components: {
       VCarouse,
       'v-header': Header
     },
-    methods:{
+    methods: {
+      cancel(){
+        // console.log("是否收藏"+this.preferred);
+
+        this.$axios.get("http://localhost:8888/collection/"+GetInfo.getUserIDByLocalStorage())
+          .then(resp=> {
+            // console.log(length);
+            for(var i = 0; i < resp.data.length;i++){
+              if(parseInt(this.$route.params.houseid) === parseInt(resp.data[i].room_id)){
+                this.$axios.delete("http://localhost:8888/collection/delete/"+resp.data[i].id);
+              }
+            }
+
+          })
+          .catch(error=>{
+            console.log(error)
+          });
+
+        this.preferred=false;
+      }
 
     },
+    computed: {
 
+    },
     mounted() {
       this.$axios
-        .post('http://localhost:8888/house/getallinfo', {houseid:parseInt(this.$route.params.houseid)})
+        .post('http://localhost:8888/house/getallinfo',
+          {houseid: parseInt(this.$route.params.houseid)})
         .then(response => {
           // console.log(response);
-          this.house=response.data;
+          this.house = response.data;
           this.position.lat = response.data.jingdu;
           this.position.lng = response.data.weidu;
         })
@@ -139,9 +164,20 @@
         });
 
       if(Check.isLogged()){
-
+        this.$axios
+          .post("http://localhost:8888/collection/iscollected",
+            {user_id:parseInt(localStorage.getItem('userid')),
+              house_id:parseInt(this.$route.params.houseid)})
+          .then(response=>{
+            // console.log(response.data);
+            this.preferred = response.data;
+          })
+          .catch(error=>{
+            console.log(error)
+          })
       }
-
+      else
+        this.preferred = false;
     }
   }
 </script>
