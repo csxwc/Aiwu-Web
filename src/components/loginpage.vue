@@ -23,9 +23,10 @@
         <Col span="8" class="col-bg">
           <h1 align="center">登陆</h1>
           <div class="row">
-          <v-login></v-login>
+          <v-login ref="choose"></v-login>
           </div>
           <router-link to="/signuppage" class="aa"><Icon type="md-contact"/>没有账号，前往注册...</router-link>
+          <router-link to="/manager" class="aaa"><Icon type="md-contact"/>管理员登陆</router-link>
         </Col>
     </Row>
     </div>
@@ -36,8 +37,8 @@
     export default {
         data(){
             return{
-                userID:'',
-                password:''
+              userID:'',
+              password:''
             }
         },
         components:{
@@ -48,7 +49,7 @@
           submit(){
 
           }
-      }
+        }
 
     }
 </script>
@@ -77,6 +78,9 @@ h1{
 .aa{
   float: right;
   color: #2d8cf0;
+}
+.aaa{
+  color: #ed4014;
 }
 #particles-js{
   position: absolute;

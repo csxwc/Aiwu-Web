@@ -11,6 +11,7 @@ import loginpage from '../components/loginpage.vue'
 
 import signuppage from '../components/signuppage.vue'
 import HouseInfo from "../components/HouseInfo";
+import Manager from '../components/manager.vue'
 
 
 Vue.use(Router);
@@ -29,6 +30,7 @@ export default new Router({
 
     {path: '/loginpage', component: loginpage},
     {path: '/signuppage', component: signuppage},
+    {path: '/manager', component: Manager},
     {path: '/houseinfo', component: HouseInfo},
 
     {path: '*', redirect: '/home'},
