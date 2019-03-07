@@ -28,7 +28,6 @@
   import card from './map_components/card.vue'
   import {BmlMarkerClusterer} from 'vue-baidu-map'
   import {BmlHeatmap} from 'vue-baidu-map'
-  import login from "./from_components/login";
 
   export default {
     data() {
