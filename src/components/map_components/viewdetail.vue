@@ -11,6 +11,7 @@
       <!--<p :style="pStyle">Company</p>-->
       <div class="demo-drawer-profile">
         <Carousel
+          v-if="value4"
           id="lunbo"
           loop
           autoplay
@@ -18,15 +19,29 @@
           :trigger="'hover'"
           :arrow="'hover'">
           <CarouselItem v-for="item in pic" :key="item.id">
-            <div style="height: 300px"><img style="width:608px; height: 300px" :src="item"></div>
+            <div style="height: 260px"><img style="width:608px; height: 260px" :src="item"></div>
           </CarouselItem>
         </Carousel>
       </div>
       <Divider />
-      <p :style="pStyle">最多可住{{msg.guest}}人    {{msg.room}}间卧室    {{msg.bed}}张床    {{msg.toilet}}间卫生间      ¥{{msg.price}}/晚</p>
       <div class="demo-drawer-profile">
-        <DatePicker type="date" multiple :open="true" placement="bottom-start" placeholder="Select date" style="width: 218px"></DatePicker>
+        <div class="lef">
+        <DatePicker type="date" multiple
+                    placeholder="查看可居住日期" style="width: 218px"></DatePicker>
+        </div>
+        <div class="rig">
+          <ul>
+            <li>
+              <p :style="pStyle"><Icon type="md-body" />最多可住{{msg.guest}}人</p><Divider />
+              <p :style="pStyle"><Icon type="ios-home" />{{msg.room}}间卧室</p><Divider />
+              <p :style="pStyle"><Icon type="md-phone-landscape" />{{msg.bed}}张床</p><Divider />
+              <p :style="pStyle"><Icon type="ios-water" />{{msg.toilet}}间卫生间</p><Divider />
+              <p :style="pStyle"><Icon type="logo-yen" />¥{{msg.price}}/晚</p>
+            </li>
+          </ul>
+        </div>
       </div>
+      <router-link>查看详情</router-link>
     </Drawer>
   </div>
 </template>
@@ -65,5 +80,13 @@
   }
   .demo-drawer-profile .ivu-col{
     margin-bottom: 12px;
+  }
+  .lef{
+    float: left;
+    width: 40%;
+  }
+  .rig{
+    float: right;
+    width: 60%;
   }
 </style>
