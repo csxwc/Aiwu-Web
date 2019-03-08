@@ -8,6 +8,8 @@
 </template>
 
 <script>
+  import GetInfo from "../../model/GetInfo";
+
   export default {
     data() {
       return {
@@ -67,12 +69,27 @@
     },
     methods: {
       remove(index) {
-        this.data_prefer.splice(index, 1);
+        //axios请求和本地数据变化同步进行，本地数据操作快，导致发送delete请求时本地数据已经消失，出现不能从本地获取数据，进而无法删除的问题
+        this.$axios.get("http://localhost:8888/collection/"+GetInfo.getUserIDByLocalStorage())
+          .then((resp)=>{
+            for(var i = 0; i < resp.data.length;i++){
+              if(parseInt(this.data_prefer[index].room_id) === parseInt(resp.data[i].room_id)){
+                this.$axios.delete("http://localhost:8888/collection/delete/"+resp.data[i].id);
+                this.data_prefer.splice(index, 1);
+              }
+            }
+
+          })
+          .catch(error=>{
+            console.log(error)
+          });
+        this.$Message.success('取消收藏成功');
       }
     },
     mounted(){
       this.$axios.get('http://localhost:8888/collection/'+this.$route.params.userid)
         .then(response=>{
+          console.log(this.data_prefer)
           console.log(response);
           this.data_prefer = response.data;
         })

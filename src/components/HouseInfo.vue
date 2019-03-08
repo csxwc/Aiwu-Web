@@ -18,7 +18,7 @@
             <div>
               <strong style="font-size: 25px;">{{this.house.name}}</strong>
               <Button icon="md-add" style="float: right;" @click="cancel"  type="primary" v-if="preferred">取消收藏</Button>
-              <Button icon="md-add" style="float: right;"  type="primary" v-else>点击收藏</Button>
+              <Button icon="md-add" style="float: right;"  type="primary" @click="prefer" v-else>点击收藏</Button>
             </div>
             <hr>
             <ul class="info">
@@ -143,6 +143,21 @@
           });
 
         this.preferred=false;
+        this.$Message.success('取消收藏成功');
+
+      },
+      prefer(){
+        this.$axios
+          .post("http://localhost:8888/collection/add",
+            {user_id: parseInt(GetInfo.getUserIDByLocalStorage()),house_id:parseInt(this.$route.params.houseid)})
+          .then(resp=>{
+            console.log(resp);
+          })
+          .catch(error=>{
+            console.log(error);
+          });
+        this.preferred = true;
+        this.$Message.success('已添加收藏');
       }
 
     },
