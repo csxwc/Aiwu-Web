@@ -122,12 +122,7 @@
             }
           }
         ],
-        data_rel: [{
-          city:'西安',
-          title:'一个海景房',
-          renttimes:4,
-          price:'123456RMB'
-        }],
+        data_rel: [],
 
         showDrawer: false,
         cityList:[{
@@ -309,6 +304,28 @@
       },
       submit(){
         console.log(this.houseInfo);
+        this.$axios.post("http://localhost:8888/lend/addhouse",
+          {
+            jingdu:this.houseInfo.lat.toString(),
+            weidu:this.houseInfo.lng.toString(),
+            name:this.houseInfo.title,
+            province:'',
+            city:this.houseInfo.city,
+            type:this.houseInfo.type,
+            guest:parseInt(this.houseInfo.guest),
+            room:parseInt(this.houseInfo.bedroom),
+            bed:parseInt(this.houseInfo.bed),
+            toilet:parseInt(this.houseInfo.toilet),
+            introduction:this.houseInfo.instroduction,
+            price:parseInt(this.houseInfo.price),
+            personid:this.houseInfo.userid
+          })
+          .then(resp=>{
+            console.log(resp)
+          })
+          .catch(error=>{console.log(error)});
+        this.$Message.success("发布成功");
+        this.showDrawer=false;
       },
       cancel(){
         this.showDrawer=false;
@@ -316,6 +333,12 @@
     },
     mounted() {
       this.houseInfo.userid = parseInt(GetInfo.getUserIDByLocalStorage());
+      this.$axios.post("http://localhost:8888/lend/getlend",{userid:this.houseInfo.userid})
+        .then(resp=>{
+          console.log(resp);
+          this.data_rel=resp.data;
+        })
+        .catch(error=>{console.log(error)})
     }
   }
 </script>
