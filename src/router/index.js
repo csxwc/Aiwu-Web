@@ -12,6 +12,7 @@ import loginpage from '../components/loginpage.vue'
 import signuppage from '../components/signuppage.vue'
 import HouseInfo from "../components/HouseInfo";
 import Manager from '../components/manager.vue'
+import Count from '../components/count.vue'
 
 
 Vue.use(Router);
@@ -32,6 +33,7 @@ export default new Router({
     {path: '/signuppage', component: signuppage},
     {path: '/manager', component: Manager},
     {path: '/houseinfo/:houseid', component: HouseInfo},
+    {path: '/count', component: Count},
 
     {path: '*', redirect: '/home'},
 

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "echarts": "^4.1.0",
+    "echarts-gl": "^1.1.1",
     "iview": "^3.2.2",
     "iview-loader": "^1.2.2",
     "node-sass": "^4.11.0",

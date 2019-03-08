@@ -9,6 +9,11 @@ import store from './store'
 import VueParticles from 'vue-particles'
 Vue.use(VueParticles)
 
+/***************引入echarts****************************/
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
+
 /*************引入axios************************/
 import axios from 'axios'
 Vue.prototype.$axios = axios;
