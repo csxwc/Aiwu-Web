@@ -89,8 +89,8 @@
     mounted(){
       this.$axios.get('http://localhost:8888/collection/'+this.$route.params.userid)
         .then(response=>{
-          console.log(this.data_prefer)
-          console.log(response);
+          // console.log(this.data_prefer)
+          // console.log(response);
           this.data_prefer = response.data;
         })
         .catch(error=>{

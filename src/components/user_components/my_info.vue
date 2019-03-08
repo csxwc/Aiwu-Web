@@ -38,7 +38,7 @@
     mounted() {
       this.$axios.post("http://localhost:8888/user/getuserinfo",{userid:parseInt(this.$route.params.userid)})
         .then(response=>{
-          console.log(response);
+          // console.log(response);
           this.user_info = response.data;
         })
         .catch(error=>{

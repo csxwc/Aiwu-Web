@@ -284,7 +284,7 @@ export default {
   mounted() {
       var logged_in = localStorage.getItem("logged-in");
       if(logged_in==="true"){
-        console.log("我登录了");
+        // console.log("我登录了");
 
       }
       else{
