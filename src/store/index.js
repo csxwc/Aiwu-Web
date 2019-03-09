@@ -6,12 +6,12 @@ const state={//要设置的全局访问的state对象
   zhutilsit:[
   ],
   price:50,
-  dist:50,
+  hot:50,
   room:50,
-  travel:50,
-  seen:50,
+  comfort:50,
   show:false,
   city:'',
+  check:false,
   obj:{
     city:'成都',
   }
@@ -25,16 +25,13 @@ const getters = {   //实时监听state值的变化(最新状态)
     return state.price
   },
   getDist(){
-    return state.dist
+    return state.hot
   },
   getRoom(){
     return state.room
   },
   getTravel(){
-    return state.travel
-  },
-  getSeen(){
-    return state.seen
+    return state.comfort
   },
   getShow(){
     return state.show
@@ -48,10 +45,9 @@ const mutations = {
     state.zhutilsit = [];
     state.zhutilsit = state.zhutilsit.concat(obj.list);
     state.price = obj.price;
-    state.dist = obj.dist;
+    state.hot = obj.hot;
     state.room = obj.room;
-    state.travel = obj.travel;
-    state.seen = obj.seen;
+    state.comfort = obj.comfort;
   },
   changeShow(state,show){
     state.show = show;
@@ -61,6 +57,9 @@ const mutations = {
   },
   changeCity(state,city){
     state.city = city;
+  },
+  changeCheck(state,check){
+    state.check = check;
   }
 };
 const actions = {
@@ -75,6 +74,9 @@ const actions = {
   },
   changeCityFooter(context,city){
     context.commit('changeCity',city)
+  },
+  changeCheckFooter(context,check){
+    context.commit('changeCheck',check)
   }
 }
 
