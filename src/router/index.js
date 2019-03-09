@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import mapBuild from '../components/Map.vue'
@@ -14,10 +15,10 @@ import HouseInfo from "../components/HouseInfo";
 import Manager from '../components/manager.vue'
 import Count from '../components/count.vue'
 
-
+Vue.use(Vuex);
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/home',
@@ -33,7 +34,7 @@ export default new Router({
     {path: '/signuppage', component: signuppage},
     {path: '/manager', component: Manager},
     {path: '/houseinfo/:houseid', component: HouseInfo},
-    {path: '/count', component: Count},
+    {path: '/count', name:'count',component: Count},
 
     {path: '*', redirect: '/home'},
 
@@ -49,3 +50,20 @@ export default new Router({
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.path == '/count') {
+    let isLogin = localStorage.getItem("check");  // 是否登录
+    if (isLogin === 'true') {
+      next();
+    }else{
+      next({ path: '/manager' });
+    }
+  }else{
+    next()
+  }
+  // next()
+});
+
+
+export default router;

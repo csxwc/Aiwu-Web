@@ -11,6 +11,7 @@ const state={//要设置的全局访问的state对象
   comfort:50,
   show:false,
   city:'',
+  check:false,
   obj:{
     city:'成都',
   }
@@ -56,6 +57,9 @@ const mutations = {
   },
   changeCity(state,city){
     state.city = city;
+  },
+  changeCheck(state,check){
+    state.check = check;
   }
 };
 const actions = {
@@ -70,6 +74,9 @@ const actions = {
   },
   changeCityFooter(context,city){
     context.commit('changeCity',city)
+  },
+  changeCheckFooter(context,check){
+    context.commit('changeCheck',check)
   }
 }
 

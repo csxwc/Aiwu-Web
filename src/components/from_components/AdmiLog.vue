@@ -27,9 +27,12 @@
       methods:{
           check(){
             if((this.admin === 'csxwc') && (this.password === 'wccsx')){
+              localStorage.setItem("check", 'true');
               this.$router.push({path:'/count'});
+              // this.$store.dispatch('changeCheckFooter',true);
             }else{
               alert("账号或密码错误，请重新输入！")
+              localStorage.setItem("check", 'false');
             }
           }
       }
