@@ -13,10 +13,9 @@
     <Icon type="md-pulse" />
     <h1 style="font-size: small">条件比重筛选</h1><br>
     价格：<Slider v-model="price"></Slider>
-    距离：<Slider v-model="dist"></Slider>
+    热度：<Slider v-model="hot"></Slider>
     房间大小：<Slider v-model="room"></Slider>
-    出行：<Slider v-model="travel"></Slider>
-    距离景点：<Slider v-model="seen"></Slider>
+    舒适：<Slider v-model="comfort"></Slider>
   </Modal>
 </template>
 <script>
@@ -24,10 +23,9 @@
     data () {
       return {
         price: 50,
-        dist: 50,
+        hot: 50,
         room: 50,
-        travel: 50,
-        seen: 50,
+        comfort: 50,
         model10: [],
         modal1: false,
         List:
@@ -49,12 +47,8 @@
             label: '热门景点'
           },
           {
-            value: '阖家出行',
-            label: '阖家出行'
-          },
-          {
-            value: '潇洒独游',
-            label: '潇洒独游'
+            value: '畅享美食',
+            label: '畅享美食'
           }
         ]
       }
@@ -65,10 +59,9 @@
         var obj = {};
         obj.list = this.model10;
         obj.price = this.price;
-        obj.dist = this.dist;
+        obj.hot = this.hot;
         obj.room = this.room;
-        obj.travel = this.travel;
-        obj.seen = this.seen;
+        obj.comfort = this.comfort;
         this.$store.dispatch('changeAllFooter',obj)
       },
       cancel () {
