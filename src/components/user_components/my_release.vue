@@ -83,44 +83,12 @@
           },
           {
             title: '被租次数',
-            key: 'renttimes'
+            key: 'booktime'
           },
           {
             title: '价格',
             key: 'price'
           },
-          {
-            title: '操作',
-            key: 'action',
-            width: 150,
-            align: 'center',
-            render: (h, params) => {
-              return h('div', [
-                h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-
-                    }
-                  }
-                }, '详情'),
-                h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index)
-                    }
-                  }
-                }, '取消发布')
-              ]);
-            }
-          }
         ],
         data_rel: [],
 
@@ -298,7 +266,7 @@
         this.data_rel.splice(index, 1);
       },
       setPosition(event){
-        console.log(event.point);
+        // console.log(event.point);
         this.houseInfo.lng = event.point.lng;
         this.houseInfo.lat = event.point.lat;
       },

@@ -94,7 +94,8 @@
                 <br>
                 <br>
                 <br>
-                <Button :type="'primary'" style="width: 80%" @click="test">预定</Button>
+                <Button :type="'primary'" style="width: 80%" v-if="rented">已被预定</Button>
+                <Button :type="'primary'" style="width: 80%" v-else @click="book">预定</Button>
               </Card>
             </div>
 
@@ -125,7 +126,9 @@
         },
         preferred: false,
 
-        selecteddate:null,
+        selecteddate: null,
+
+        rented: false,
       }
     },
     components: {
@@ -133,8 +136,24 @@
       'v-header': Header
     },
     methods: {
-      book(){
-        this.$axios.post("http://localhost:8888/")
+      book() {
+        if (Check.isLogged()) {
+          this.$axios.post("http://localhost:8888/rent/torent",
+            {
+              houseid: parseInt(this.$route.params.houseid),
+              userid: parseInt(GetInfo.getUserIDByLocalStorage()),
+              startdate: this.selecteddate[0].getTime(),
+              enddate: this.selecteddate[1].getTime()
+            })
+            .then(resp=>{
+              console.log(resp);
+            })
+            .catch(error=>{
+              console.log(error)
+            })
+        } else {
+          this.$Message.warning('您没有登录，请登录');
+        }
       },
 
       cancel() {
@@ -164,7 +183,7 @@
             .post("http://localhost:8888/collection/add",
               {user_id: parseInt(GetInfo.getUserIDByLocalStorage()), house_id: parseInt(this.$route.params.houseid)})
             .then(resp => {
-              console.log(resp);
+              // console.log(resp);
             })
             .catch(error => {
               console.log(error);
@@ -176,14 +195,27 @@
         }
       }
 
-    },
-    computed: {},
+    }
+    ,
+    computed: {}
+    ,
     mounted() {
+
+      this.$axios.post("http://localhost:8888/rent/isrent",
+        {houseid: parseInt(this.$route.params.houseid)})
+        .then(resp=>{
+          // console.log(resp);
+          this.rented = resp.data;
+        })
+        .catch(error=>{
+          console.log(error);
+        });
+
       this.$axios
         .post('http://localhost:8888/house/getallinfo',
           {houseid: parseInt(this.$route.params.houseid)})
         .then(response => {
-          console.log(response);
+          // console.log(response);
           this.house = response.data;
           this.position.lat = response.data.jingdu;
           this.position.lng = response.data.weidu;

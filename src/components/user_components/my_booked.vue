@@ -55,21 +55,10 @@
                   },
                   on: {
                     click: () => {
-                      this.detail()
+                      this.detail(params.index)
                     }
                   }
                 }, '详情'),
-                h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index)
-                    }
-                  }
-                }, '取消预定'),
 
               ]);
             }
@@ -109,17 +98,20 @@
     },
     methods: {
       remove(index) {
+        // this.$axios.delete();
         this.data_booking.splice(index, 1);
       },
       detail(index) {
-        this.$router.push("/home")
+        // console.log(this.data_booking);
+        // console.log(index)
+        this.$router.push("/houseinfo/"+this.data_booking[index].houseid);
       },
     },
     mounted() {
       this.$axios
         .post('http://localhost:8888/rent/getnotused', {userid: parseInt(this.$route.params.userid)})
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.data_booking = response.data
         })
         .catch(error => {

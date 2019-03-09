@@ -41,6 +41,7 @@
 
                   </Menu>
                     <v-carousel >
+                      <div style="font-size: 40px;">我是你爸爸</div>
                     </v-carousel>
                 </div>
                 <div style="width: 80%; text-align: center;margin:0 auto;">
