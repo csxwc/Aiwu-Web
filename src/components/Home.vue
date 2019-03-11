@@ -46,8 +46,14 @@
                     <v-carousel @textChange="textChange($event)">
                     </v-carousel>
                 </div>
-                <div style="width: 80%; text-align: center;margin:0 auto;">
-                  <div style="font-size:40px;text-align: center;"><strong>精品推荐</strong></div>
+                <div style="width: 75%; text-align: center;margin:0 auto;">
+                  <div style="margin-top: 50px; height: 50px">
+                    <Select v-model="selected" filterable style="width: 60%;float: left;" placeholder="输入目的地或城市">
+                      <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
+                    <Button type="error" ghost shape="circle" icon="md-pin" style="width: 20%;font-size: 23px;">前往</Button>
+                  </div>
+                  <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
                   <Row  type="flex" v-for="(row,row_index) in 2":key="row.id" :gutter="60" style="" align="bottom">
                     <Col span="8" push="0" v-for="(col,col_index) in 3":key="col.id"><v-sugCard
                       :src='infoList[row_index*3+col_index].src'
@@ -328,7 +334,13 @@ export default {
 .demo-drawer-profile .ivu-col{
   margin-bottom: 12px;
 }
-
+.ivu-select-single .ivu-select-selection{
+  height: 50px;
+}
+.ivu-select-input{
+  height: 50px;
+  font-size: 23px;
+}
 </style>
 
 
