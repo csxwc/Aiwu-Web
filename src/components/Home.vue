@@ -1,73 +1,88 @@
 <template>
-  <div>
-    <div style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999" v-if="pic===0">
-      我是你爸爸
-    </div>
-    <div style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999" v-else-if="pic===1">
-      我是你爷爷
-    </div>
-    <div style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999" v-else>我是你儿子</div>
-    <Layout>
-      <!--<v-header></v-header>-->
-      <div style="text-align: center">
-        <!--<v-header id="header"></v-header>-->
-        <!--<v-header id="head"></v-header>-->
-        <Menu :theme="'dark'" id="head" mode="horizontal">
-          <MenuItem name="1" style="width: 30%;">
-            <Select @on-change="selectChange($event)"
-                    placeholder="请选择房源地..."
-                    size="large"
-                    style="width:100%;"
-                    transfer
-                    v-model="selected">
-              <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
-            </Select>
-          </MenuItem>
-          <MenuItem name="2" style="width: 10%;padding-left:0px ">
-            <Button @click="sendLocation" icon="ios-search" size="large">Search</Button>
-          </MenuItem>
-          <div style="float: right;">
-            <MenuItem name="3" style="padding-left: 0" to="/home">
-              <Icon type="md-home"/>
-              主页
-            </MenuItem>
-            <MenuItem name="4" style="padding-left: 0">
-              <Icon @click="value1 = true" type="md-compass"/>
-              帮助
-            </MenuItem>
-            <MenuItem :to="this.redirect" name="5" style="padding-left: 0">
-              <div v-if="isLogged">
-                <Icon to="/user/my_booked/" type="md-contact"/>
-                我的
-              </div>
-              <div v-else>
-                <Icon type="md-contact"/>
-                登录
-              </div>
-            </MenuItem>
-          </div>
+    <div>
+      <div v-if="pic===0" class="text">
+        <strong style="font-size: 35px;">来九州看樱花<br>
+          在大自然间畅快呼吸</strong>
+        <p style="font-size: 20px">避开人潮看花泡温泉</p>
+        <Button type="default" ghost size="large">立即前往</Button>
+      </div>
+      <div v-else-if="pic===1" class="text">
+        <strong style="font-size: 35px;">五月武汉<br>
+          自由自在、悠然赏樱</strong>
+        <p style="font-size: 20px">抓住樱花季的尾巴，特色民宿任你选</p>
+        <Button type="default" ghost size="large">立即前往</Button>
+      </div>
+      <div v-else class="text">
+        <strong style="font-size: 35px;">悠闲一夏<br>
+          趁花开、邂逅成都</strong>
+        <p style="font-size: 20px">上百亩花田任你观赏</p>
+        <Button type="default" ghost size="large">立即前往</Button>
+      </div>
+        <Layout>
+            <!--<v-header></v-header>-->
+                <div style="text-align: center">
+                  <!--<v-header id="header"></v-header>-->
+                  <!--<v-header id="head"></v-header>-->
+                  <Menu mode="horizontal" :theme="'dark'" id="head">
+                    <MenuItem name="1" style="width: 30%;">
+                      <Select @on-change="selectChange($event)"
+                              placeholder="请选择房源地..."
+                              size="large"
+                              style="width:100%;"
+                              transfer
+                              v-model="selected">
+                        <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
+                      </Select>
+                    </MenuItem>
+                    <MenuItem name="2" style="width: 10%;padding-left:0px ">
+                      <Button @click="sendLocation" icon="ios-search" ghost size="large">Search</Button>
+                    </MenuItem>
+                    <div style="float: right;">
+                      <MenuItem style="padding-left: 0" to="/home" name="3">
+                        <Icon type="md-home"/>
+                        主页
+                      </MenuItem >
+                      <MenuItem style="padding-left: 0" name="4" >
+                        <Icon type="md-compass" @click="value1 = true"/>
+                        帮助
+                      </MenuItem>
+                      <MenuItem style="padding-left: 0" :to="this.redirect" name="5">
+                        <div  v-if="isLogged">
+                          <Icon type="md-contact" to="/user/my_booked/"/>
+                          我的</div>
+                        <div v-else>
+                          <Icon type="md-contact"/>
+                          登录
+                        </div>
+                      </MenuItem>
+                    </div>
 
-        </Menu>
-        <v-carousel @textChange="textChange($event)">
-        </v-carousel>
-      </div>
-      <div style="width: 75%; text-align: center;margin:0 auto;">
-        <div style="margin-top: 50px; height: 50px">
-          <Select filterable placeholder="输入目的地或城市" style="width: 60%;float: left;" v-model="selected">
-            <Option :key="item.value" :value="item.value" v-for="item in cityList">{{ item.label }}</Option>
-          </Select>
-          <Button ghost icon="md-pin" shape="circle" style="width: 20%;font-size: 23px;" type="error">前往</Button>
-        </div>
-        <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
-        <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in 2">
-          <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
-            <v-sugCard
-              :houseid='infoList[row_index*3+col_index].houseid'
-            :src="infoList[row_index*3+col_index].src"
-            :count="infoList[row_index*3+col_index].count"></v-sugCard>
-          </Col>
-        </Row>
-      </div>
+                  </Menu>
+                    <v-carousel @textChange="textChange($event)">
+                    </v-carousel>
+                </div>
+                <div style="width: 100%;" :style="{backgroundImage:'url('+require('../assets/images/1.jpg')+')'}">
+                  <div style="width: 75%; text-align: center;margin:0 auto;">
+                    <hr style="margin-top: 40px;">
+                    <div style="margin-top: 40px; height: 50px">
+                      <Icon type="ios-train" size='50' style="float: left"/>
+                      <Select v-model="selected" filterable style="width: 63%;" placeholder="输入目的地、城市">
+                        <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                      </Select>
+                      <Icon type="ios-arrow-forward" size='50'/>
+                      <Button type="error" ghost icon="md-pin" style="width: 25%;font-size: 23px;" @click="sendLocation">前往</Button>
+                    </div>
+                    <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
+                    <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in 2">
+                      <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
+                        <v-sugCard
+                          :houseid='infoList[row_index*3+col_index].houseid'
+                          :src="infoList[row_index*3+col_index].src"
+                          :count="infoList[row_index*3+col_index].count"></v-sugCard>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
 
 
     </Layout>
@@ -80,13 +95,14 @@
       <p :style="pStyle">Company</p>
       <div class="demo-drawer-profile">
 
-      </div>
-      <Divider/>
-      <p :style="pStyle">Contacts</p>
-      <div class="demo-drawer-profile">
-      </div>
-    </Drawer>
-  </div>
+        </div>
+        <Divider />
+        <p :style="pStyle">Contacts</p>
+        <div class="demo-drawer-profile">
+        </div>
+      </Drawer>
+      <v-footer></v-footer>
+    </div>
 </template>
 
 <script>
@@ -94,7 +110,7 @@
   import SuggestCard from './home_components/SuggestCard.vue'
   import Carousel from './home_components/Carousel.vue'
   import VueEvent from '../model/VueEvent.js'
-
+  import Footer from './Footer.vue'
   export default {
     data() {
       return {
@@ -257,10 +273,11 @@
       }
     },
 
-    components: {
-      'v-header': Header,
-      'v-sugCard': SuggestCard,
-      'v-carousel': Carousel,
+    components:{
+        'v-header':Header,
+        'v-sugCard':SuggestCard,
+        'v-carousel':Carousel,
+        'v-footer':Footer
     },
     methods: {
       textChange(event) {
@@ -309,30 +326,31 @@
   }
 </script>
 
-<style>
-  @import url('../assets/css/container.css');
-
-  #head {
-    position: absolute;
-    width: 100vw;
-    background: rgba(255, 255, 255, 0);
-  }
-
-  .demo-drawer-profile {
-    font-size: 14px;
-  }
-
-  .demo-drawer-profile .ivu-col {
-    margin-bottom: 12px;
-  }
-
-  .ivu-select-single .ivu-select-selection {
-    height: 50px;
-  }
-
-  .ivu-select-input {
-    height: 50px;
-    font-size: 23px;
+<style >
+@import url('../assets/css/container.css');
+#head{
+  position: absolute;
+  width: 100vw;
+  background: rgba(255,255,255,0);
+}
+.demo-drawer-profile{
+  font-size: 14px;
+}
+.demo-drawer-profile .ivu-col{
+  margin-bottom: 12px;
+}
+.ivu-select-single .ivu-select-selection{
+  height: 50px;
+}
+.ivu-menu-item{
+  font-size: 20px;
+}
+.ivu-select-input{
+  height: 50px;
+  font-size: 23px;
+}
+  .text{
+    color:white;font-size: 40px;position: absolute;top: 160px;left: 200px;z-index: 999
   }
 </style>
 
