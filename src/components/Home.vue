@@ -1,7 +1,7 @@
 <template>
     <div>
-      <div v-if="picNumber===0" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爸爸</div>
-      <div v-else-if="picNumber===1" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爷爷</div>
+      <div v-if="pic===0" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爸爸</div>
+      <div v-else-if="pic===1" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爷爷</div>
       <div v-else style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你儿子</div>
         <Layout>
             <!--<v-header></v-header>-->
@@ -43,7 +43,7 @@
                     </div>
 
                   </Menu>
-                    <v-carousel ref="carousel">
+                    <v-carousel @textChange="textChange($event)">
                     </v-carousel>
                 </div>
                 <div style="width: 80%; text-align: center;margin:0 auto;">
@@ -84,6 +84,7 @@ import VueEvent from '../model/VueEvent.js'
 export default {
     data(){
         return{
+          pic:0,
           cityList: [
             {
               value: '北京',
@@ -267,6 +268,9 @@ export default {
         'v-carousel':Carousel,
     },
     methods:{
+      textChange(event){
+        this.pic = event;
+      },
 
       selectChange(event) {
         // console.log(event);
@@ -297,9 +301,10 @@ export default {
       }
   },
   computed:{
-    picNumber(){
-      return this.$refs.carousel.picNumber;
-    },
+    // picNumber(){
+    //    return this.$refs.zoumadeng.change();
+    // },
+
     isLogged(){
       return localStorage.getItem("logged-in") === 'true';
     },

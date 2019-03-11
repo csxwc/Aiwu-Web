@@ -24,14 +24,18 @@
 
     data(){
       return{
-        picNumber:0
       }
     },
-
+    props:{
+      picNumber: Number
+    },
+    model:{
+      prop:'picNumber',
+      event:'change'
+    },
     methods:{
       change(event){
-        console.log(event);
-        this.picNumber = event;
+        this.$emit('textChange',event);
       }
     },
   }
