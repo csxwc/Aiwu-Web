@@ -1,5 +1,8 @@
 <template>
     <div>
+      <div v-if="pic==0" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爸爸</div>
+      <div v-else-if="pic==1" style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你爷爷</div>
+      <div v-else style="color:white;font-size: 40px;position: absolute;top: 220px;left: 250px;z-index: 999">我是你儿子</div>
         <Layout>
             <!--<v-header></v-header>-->
                 <div style="text-align: center">
@@ -40,8 +43,7 @@
                     </div>
 
                   </Menu>
-                    <v-carousel >
-                      <div style="font-size: 40px;">我是你爸爸</div>
+                    <v-carousel picNumber="pic">
                     </v-carousel>
                 </div>
                 <div style="width: 80%; text-align: center;margin:0 auto;">
@@ -82,6 +84,7 @@ import VueEvent from '../model/VueEvent.js'
 export default {
     data(){
         return{
+          pic:0,
           cityList: [
             {
               value: '北京',

@@ -63,6 +63,21 @@
         obj.room = this.room;
         obj.comfort = this.comfort;
         this.$store.dispatch('changeAllFooter',obj)
+        this.$axios.post('http://182.149.196.149:8888/house/insel', {
+          city:this.$store.state.city,
+          price:this.price,
+          hot:this.hot,
+          room:this.room,
+          comfort:this.comfort,
+          theme:this.model10
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(this.$store.state.city)
+            console.log(error);
+          });
       },
       cancel () {
         this.$Message.info('Clicked cancel');

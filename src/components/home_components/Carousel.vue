@@ -5,7 +5,8 @@
     autoplay
     :autoplay-speed="3000"
     :trigger="'hover'"
-    :arrow="'hover'">
+    :arrow="'hover'"
+    @on-change="change($event)">
     <CarouselItem>
       <div class="imgc"><img src="https://z1.muscache.cn/pictures/00b12c64-0851-40e7-83aa-6bba10221435.jpg" alt=""></div>
     </CarouselItem>
@@ -19,8 +20,17 @@
 </template>
 <script>
   export default {
-    name:'v-carouse'
-
+    name:'v-carouse',
+    methods:{
+      change(event){
+        console.log(event);
+        console.log(typeof event)
+        this.picNumber = event
+      }
+    },
+    props:{
+      picNumber:0
+    }
   }
 </script>
 <style>
