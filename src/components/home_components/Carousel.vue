@@ -21,16 +21,19 @@
 <script>
   export default {
     name:'v-carouse',
+
+    data(){
+      return{
+        picNumber:0
+      }
+    },
+
     methods:{
       change(event){
         console.log(event);
-        console.log(typeof event)
-        this.picNumber = event
+        this.picNumber = event;
       }
     },
-    props:{
-      picNumber:0
-    }
   }
 </script>
 <style>
