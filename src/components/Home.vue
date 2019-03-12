@@ -150,14 +150,45 @@
                       </Row>
                     </div>
                   </div>
+                  <br>
+                  <br>
+                  <br>
                   <div style="width: 100%;background-color: white;height: 300px">
-                    <div style="width: 75%;height:300px;margin: 0 auto;background-color: #2db7f5">
+                    <div style="width: 75%;height:300px;margin: 0 auto">
                       <Row>
-                        <Col span="12">
-                          <h1></h1>
+                        <Col span="10">
+                          <div style="margin:30px">
+                            <h1>加入我们</h1>
+                            <h1>了解更多详情</h1>
+                            <img :src="require('../assets/images/QR1.jpg')" alt="" style="height: 100px;width: 100px;margin-top: 20px;margin-right: 50px">
+                            <img :src="require('../assets/images/QR2.jpg')" alt="" style="height: 100px;width: 100px;margin-top: 20px">
+                          </div>
                         </Col>
-                        <Col span="12">
-
+                        <Col span="6">
+                          <div style="margin:30px">
+                            <p style="font-size: 20px;margin-bottom: 40px">相关旅游网链接</p>
+                            <ul style="list-style-type:none">
+                              <li style="margin: 10px 0">
+                                <a href="https://www.airbnb.cn" target="view_window" style="font-size: 15px">爱彼迎Airbnb</a>
+                              </li>
+                              <li style="margin: 10px 0">
+                                <a href="http://www.mafengwo.cn" target="view_window" style="font-size: 15px">马蜂窝旅游网</a>
+                              </li>
+                              <li style="margin: 10px 0">
+                                <a href="https://www.ctrip.com" target="view_window" style="font-size: 15px">携程旅行</a>
+                              </li>
+                              <li style="margin: 10px 0">
+                                <a href="https://www.qunar.com" target="view_window" style="font-size: 15px">去哪儿网</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </Col>
+                        <Col span="8">
+                          <div style="margin:30px">
+                            <h1>关于我们</h1>
+                            <br>
+                            <p style="font-size: 15px">必须的，实话，可以，这，爷笑了（三重否定表肯定）</p>
+                          </div>
                         </Col>
                       </Row>
                     </div>
