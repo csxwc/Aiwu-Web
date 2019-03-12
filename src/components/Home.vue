@@ -74,14 +74,24 @@
                       <Button type="error" ghost icon="md-pin" style="width: 25%;font-size: 23px;" @click="sendLocation">前往</Button>
                     </div>
                     <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
-                    <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in 2">
-                      <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
-                        <router-link :to="'/houseinfo/'+infoList[row_index*3+col_index].houseid"><v-sugCard
-                          :houseid='infoList[row_index*3+col_index].houseid'
-                          :src="infoList[row_index*3+col_index].src"
-                          :count="infoList[row_index*3+col_index].count"></v-sugCard></router-link>
-                      </Col>
-                    </Row>
+
+
+                    <div v-if="suggest_selector">
+                      <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in Math.ceil(infoList.length/3)">
+                        <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
+                          <router-link :to="'/houseinfo/'+infoList[row_index*3+col_index].houseid"><v-sugCard
+                            :houseid='infoList[row_index*3+col_index].houseid'
+                            :src="infoList[row_index*3+col_index].src"
+                            :count="infoList[row_index*3+col_index].count"></v-sugCard></router-link>
+                        </Col>
+                      </Row>
+                    </div>
+                    <div v-else>
+
+                    </div>
+
+
+
                   </div>
                   <div style="height: 1100px;width: 75%; text-align: center;margin: 0 auto;">
                     <div style="margin-top: 40px">
@@ -179,6 +189,8 @@
   import Carousel from './home_components/Carousel.vue'
   import VueEvent from '../model/VueEvent.js'
   import Footer from './Footer.vue'
+  import Check from "../model/Check";
+  import GetInfo from "../model/GetInfo";
   export default {
     data() {
       return {
@@ -337,6 +349,7 @@
           display: 'block',
           marginBottom: '16px'
         },
+        suggest_selector: true,
 
       }
     },
@@ -370,9 +383,23 @@
       }
     },
     mounted() {
-      var logged_in = localStorage.getItem("logged-in");
-      if (logged_in === "true") {
+      if (Check.isLogged()) {
         // console.log("我登录了");
+        this.$axios.post('http://localhost:8888/house/recommend',{uid:GetInfo.getUserIDByLocalStorage()})
+          .then(resp=>{
+            console.log(resp)
+          })
+          .catch(error=>{
+            console.log(error)
+          });
+        if(this.suggest_houseid.length <= 6){
+          this.suggest_selector = true;
+        }
+        else {
+          this.suggest_selector =false;
+          this.infoList = resp.data;
+
+        }
 
       } else {
         localStorage.setItem("logged-in", false);

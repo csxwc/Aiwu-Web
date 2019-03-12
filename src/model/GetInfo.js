@@ -1,6 +1,6 @@
 const GetInfo = {
   getUserIDByLocalStorage(){
-    return localStorage.getItem("userid");
+    return parseInt(localStorage.getItem("userid"));
   },
 };
 
