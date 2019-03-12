@@ -61,7 +61,7 @@
                     <v-carousel @textChange="textChange($event)">
                     </v-carousel>
                 </div>
-                <div style="width: 100%;" :style="{backgroundImage:'url('+require('../assets/images/1.jpg')+')'}">
+                <div style="width: 100%;" :style="{backgroundImage:'url('+require('../assets/images/2.jpg')+')'}">
                   <div style="width: 75%; text-align: center;margin:0 auto;">
                     <hr style="margin-top: 40px;">
                     <div style="margin-top: 40px; height: 50px">
@@ -75,10 +75,10 @@
                     <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
                     <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in 2">
                       <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
-                        <v-sugCard
+                        <router-link :to="'/houseinfo/'+infoList[row_index*3+col_index].houseid"><v-sugCard
                           :houseid='infoList[row_index*3+col_index].houseid'
                           :src="infoList[row_index*3+col_index].src"
-                          :count="infoList[row_index*3+col_index].count"></v-sugCard>
+                          :count="infoList[row_index*3+col_index].count"></v-sugCard></router-link>
                       </Col>
                     </Row>
                   </div>
