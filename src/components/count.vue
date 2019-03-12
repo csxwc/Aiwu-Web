@@ -4,16 +4,6 @@
     <Row>
       <Col span="4">
         <Menu :theme="'light'" active-name="99" @on-select="test($event)">
-          <MenuGroup title="用户管理">
-            <MenuItem name="99">
-              <Icon type="md-document" />
-              文章管理
-            </MenuItem>
-            <MenuItem name="100">
-              <Icon type="md-chatbubbles" />
-              评论管理
-            </MenuItem>
-          </MenuGroup>
           <MenuGroup title="统计分析">
             <MenuItem name="1">
               <Icon type="md-heart"/>
@@ -21,7 +11,7 @@
             </MenuItem>
             <MenuItem name="2">
               <Icon type="md-leaf" />
-              分城市民宿价格统计
+              城市民宿价格统计
             </MenuItem>
             <MenuItem name="3">
               <Icon type="md-leaf" />
@@ -40,6 +30,7 @@
               城市民宿数量统计
             </MenuItem>
           </MenuGroup>
+          <Button type="error" long @click="leave">离开管理员界面</Button>
         </Menu>
       </Col>
       <Col span="20">
@@ -90,6 +81,10 @@
               this.draw6();
               break;
           }
+        },
+        leave(){
+          localStorage.setItem("check", 'false');
+          this.$router.push('/home')
         },
         draw1(){
           var date = [
