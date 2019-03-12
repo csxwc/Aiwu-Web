@@ -1,5 +1,6 @@
 <template>
     <div>
+      <BackTop></BackTop>
       <div v-if="pic===0" class="text">
         <strong style="font-size: 35px;">来九州看樱花<br>
           在大自然间畅快呼吸</strong>
@@ -82,9 +83,76 @@
                       </Col>
                     </Row>
                   </div>
+                  <div style="height: 1100px;width: 75%; text-align: center;margin: 0 auto;">
+                    <div style="margin-top: 40px">
+                    <h1 style="margin-bottom: 80px;font-size: 40px">我们的服务</h1>
+                      <Row style="margin-top: 40px">
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="md-globe" size='80'/><br><br>
+                          <p style="font-size: 16px">全国各大旅游城市，上万套精品民宿房源，覆盖多种民宿风格，居住人数，旅游体验</p>
+                        </Col>
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="md-compass" size='80'/><br><br>
+                          <p style="font-size: 16px">全国地图精准定位，房源位置信息一键查看，距离，热度，密集度可视化统计，旅游热力图绝佳显示方式</p>
+                        </Col>
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="logo-instagram" size='80'/><br><br>
+                          <p style="font-size: 16px">千万级民宿文字描述，超过60万张高质量照片，全方位全角度展现民宿精美内饰</p>
+                        </Col>
+                      </Row>
+                      <Row style="margin-top: 40px">
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="ios-paper-plane" size='80'/><br><br>
+                          <p style="font-size: 16px">提供浏览，预定，收藏，发布，删除，全套民宿预定服务，绝佳用户体验</p>
+                        </Col>
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="ios-school" size='80'/><br><br>
+                          <p style="font-size: 16px">基于大数据的个性推荐算法，精准确定用户定位，提供符合用于浏览习惯的精品房源</p>
+                        </Col>
+                        <Col span="8" style="padding-left: 60px;padding-right: 60px"><Icon type="ios-stats" size='80'/><br><br>
+                          <p style="font-size: 16px">从住宿，数量，热度，价格等多方面对民宿房源进行统计，通过数据揭示民宿房源现状</p>
+                        </Col>
+                      </Row>
+                    </div>
+                    <hr style="margin-top: 40px;margin-bottom: 40px">
+                    <h1 style="margin-bottom: 80px;font-size: 40px">我们的团队成员</h1>
+                    <div style="margin-top: 40px;border-radius:40px;box-shadow: 10px 10px 5px #888888;background-color: papayawhip;height: 300px">
+                      <Row style="margin-top: 40px">
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/li.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">李泽峰</p><br><p style="font-size: 14px">项目经理兼后端工程师</p>
+                        </Col>
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/hong.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">洪振杰</p><br><p style="font-size: 14px">后端工程师</p>
+                        </Col>
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/wang.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">王奉</p><br><p style="font-size: 14px">前端工程师</p>
+                        </Col>
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/duan.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">段景海</p><br><p style="font-size: 14px">前端工程师</p>
+                        </Col>
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/chen.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">陈小宇</p><br><p style="font-size: 14px">数据工程师</p>
+                        </Col>
+                        <Col span="4" style="padding-left: 30px;padding-right: 30px">
+                          <Avatar :src="require('../assets/images/huang.jpg')" size='large' style="margin-top: 50px"/><br><br>
+                          <p style="font-size: 20px">黄煜昊</p><br><p style="font-size: 14px">数据工程师</p>
+                        </Col>
+                      </Row>
+                    </div>
+                  </div>
+                  <div style="width: 100%;background-color: white;height: 300px">
+                    <div style="width: 75%;height:300px;margin: 0 auto;background-color: #2db7f5">
+                      <Row>
+                        <Col span="12">
+                          <h1></h1>
+                        </Col>
+                        <Col span="12">
+
+                        </Col>
+                      </Row>
+                    </div>
+                  </div>
                 </div>
-
-
     </Layout>
     <Drawer :closable="false" v-model="value1" width="640">
       <p :style="pStyle">User Profile</p>
@@ -352,6 +420,12 @@
   .text{
     color:white;font-size: 40px;position: absolute;top: 160px;left: 200px;z-index: 999
   }
+.ivu-avatar-large {
+  width: 100px;
+  height: 100px;
+  line-height: 40px;
+  border-radius: 20px;
+}
 </style>
 
 
