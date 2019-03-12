@@ -50,7 +50,7 @@
     </Panel>
     <Button type="success" @click="choose" style="width: 200px;margin-left: 40px; margin-bottom: 10px">筛选</Button>
     <Button type="info" @click="smartshow" style="width: 200px;margin-left: 40px; margin-bottom: 10px">智能推荐</Button>
-    <v-smartchoose ></v-smartchoose>
+    <v-smartchoose @pass="showpositions"></v-smartchoose>
   </Collapse>
 </template>
 <script>
@@ -134,6 +134,16 @@
       },
       smartshow(){
         this.$store.dispatch('changeShowFooter',true);
+      },
+      showpositions(response){
+        // console.log(obj)
+        this.$parent.positions = [];
+        this.$parent.messages = [];
+        for (var i= response.data.length-1; i >= 0; i--) {
+          this.$parent.positions.push({lng:response.data[i].weidu,lat:response.data[i].jingdu});
+          // this.$parent.messages.push(response.data[i]);
+        }
+        this.$parent.messages = response.data;
       }
     },
     components:{

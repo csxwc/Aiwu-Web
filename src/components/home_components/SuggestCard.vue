@@ -23,11 +23,11 @@
           picture: '', price: '', province: '', room: '',
           toilet: '', type: '', weidu: '',
         },
+        src:''
       }
     },
     props: {
       'houseid': Number,
-      'src':String,
       'count':Number,
     },
     methods: {
@@ -49,6 +49,16 @@
           // console.log(resp.data)
         })
         .catch(error => {
+          console.log(error);
+        });
+      this.$axios.post('http://localhost:8888/picture/getlittle', {
+        houseid:this.houseid
+      })
+        .then((response) => {
+          console.log(response);
+          this.src = response.data[0][0];
+        })
+        .catch((error) => {
           console.log(error);
         });
     }

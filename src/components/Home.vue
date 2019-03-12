@@ -76,18 +76,25 @@
                     <div style="font-size:23px;margin-top:20px;text-align: left"><strong>热门推荐</strong></div>
 
 
-                    <div v-if="suggest_selector">
                       <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in Math.ceil(infoList.length/3)">
                         <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
                           <router-link :to="'/houseinfo/'+infoList[row_index*3+col_index].houseid"><v-sugCard
                             :houseid='infoList[row_index*3+col_index].houseid'
-                            :src="infoList[row_index*3+col_index].src"
                             :count="infoList[row_index*3+col_index].count"></v-sugCard></router-link>
+                        </Col>
+                      </Row>
+                    <div style="font-size:23px;margin-top:20px;text-align: left"><strong>个性推荐</strong></div>
+                    <div v-if="!suggest_selector">
+                      <Row :gutter="10" :key="row.id" align="top" style="" type="flex" v-for="(row,row_index) in Math.ceil(userList.length/3)">
+                        <Col :key="col.id" push="0" span="8" v-for="(col,col_index) in 3">
+                          <router-link :to="'/houseinfo/'+userList[row_index*3+col_index].houseid"><v-sugCard
+                            :houseid='userList[row_index*3+col_index].houseid'
+                            :count="userList[row_index*3+col_index].count"></v-sugCard></router-link>
                         </Col>
                       </Row>
                     </div>
                     <div v-else>
-
+                      <h1  style="text-align: center">个性推荐基于用户浏览习惯，登陆后显示个性推荐内容</h1>
                     </div>
 
 
@@ -372,6 +379,13 @@
           {houseid: 2433033, src: 'https://z1.muscache.cn/im/pictures/84bf382e-c3d5-4dc0-8e59-7326874ef1ef.jpg', count: 5},
           {houseid: 2877048, src: 'https://z1.muscache.cn/im/pictures/a5c26305-21a9-46c5-a5d1-c6222db507f3.jpg', count: 4},
           {houseid: 3371149, src: 'https://z1.muscache.cn/4ea/air/v2/pictures/c0e566ea-93d4-404d-9cce-b780f67cda88.jpg', count: 4.5}],
+        userList: [
+          {houseid: 1643534, src: 'https://z1.muscache.cn/im/pictures/40ad5b5a-9592-42fb-b6a2-3d68c637af12.jpg', count: 5},
+          {houseid: 1933639, src: 'https://z1.muscache.cn/im/pictures/3eda431a-8455-48b7-8764-0759d67fdcab.jpg', count: 4.5},
+          {houseid: 1991056, src: 'https://z1.muscache.cn/im/pictures/f755e3c3-70be-47da-8f35-c5cb1fb15617.jpg', count: 4.5},
+          {houseid: 2433033, src: 'https://z1.muscache.cn/im/pictures/84bf382e-c3d5-4dc0-8e59-7326874ef1ef.jpg', count: 5},
+          {houseid: 2877048, src: 'https://z1.muscache.cn/im/pictures/a5c26305-21a9-46c5-a5d1-c6222db507f3.jpg', count: 4},
+          {houseid: 3371149, src: 'https://z1.muscache.cn/4ea/air/v2/pictures/c0e566ea-93d4-404d-9cce-b780f67cda88.jpg', count: 4.5}],
         value1: false,
         pStyle: {
           fontSize: '16px',
@@ -419,18 +433,25 @@
         this.$axios.post('http://localhost:8888/house/recommend',{uid:GetInfo.getUserIDByLocalStorage()})
           .then(resp=>{
             console.log(resp)
+            if(resp.data.length <= 6){
+              this.suggest_selector = true;
+            }
+            else {
+              this.suggest_selector =false;
+              this.userList = resp.data;
+            }
           })
           .catch(error=>{
             console.log(error)
           });
-        if(this.suggest_houseid.length <= 6){
-          this.suggest_selector = true;
-        }
-        else {
-          this.suggest_selector =false;
-          this.infoList = resp.data;
-
-        }
+        // if(this.suggest_houseid.length <= 6){
+        //   this.suggest_selector = true;
+        // }
+        // else {
+        //   this.suggest_selector =false;
+        //   this.userList = resp.data;
+        //
+        // }
 
       } else {
         localStorage.setItem("logged-in", false);

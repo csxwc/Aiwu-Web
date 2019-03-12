@@ -63,7 +63,7 @@
         obj.room = this.room;
         obj.comfort = this.comfort;
         this.$store.dispatch('changeAllFooter',obj)
-        this.$axios.post('http://182.149.196.149:8888/house/insel', {
+        this.$axios.post('http://localhost:8888/house/insel', {
           city:this.$store.state.city,
           price:this.price,
           hot:this.hot,
@@ -73,6 +73,7 @@
         })
           .then((response) => {
             console.log(response);
+            this.$emit("pass",response);
           })
           .catch((error) => {
             console.log(this.$store.state.city)
