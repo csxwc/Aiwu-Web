@@ -46,6 +46,7 @@
           {houseid: this.houseid})
         .then(resp => {
           this.houseInfo = resp.data;
+          // console.log(resp.data)
         })
         .catch(error => {
           console.log(error);

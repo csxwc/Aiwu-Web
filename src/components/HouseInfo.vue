@@ -1,7 +1,38 @@
 <template>
   <div>
     <v-header></v-header>
-    <v-carouse></v-carouse>
+    <Carousel
+    id="lunbo"
+    loop
+    autoplay
+    :autoplay-speed="3000"
+    :trigger="'hover'"
+    :arrow="'hover'">
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[0] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[1] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[2] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[3] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[4] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[5] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[6] alt=""></div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="imgc"><img :src=pic[7] alt=""></div>
+      </CarouselItem>
+  </Carousel>
     <br>
     <div style="width: 80%; margin: 0 auto">
       <Row :gutter="20">
@@ -120,6 +151,7 @@
     data() {
       return {
         house: {},
+        pic:[],
         position: {
           lng: '',
           lat: ''
@@ -223,7 +255,19 @@
         .catch(error => {
           console.log(error)
         });
-
+      this.$axios.post('http://localhost:8888/picture/getlittle', {
+        houseid:parseInt(this.$route.params.houseid)
+      })
+        .then((response) => {
+          console.log(response);
+          this.pic = [];
+          for(var i=0;i<response.data.length;i++){
+            this.pic.push(response.data[i][0]);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       if (Check.isLogged()) {
         this.$axios
           .post("http://localhost:8888/collection/iscollected",
@@ -250,5 +294,12 @@
     float: left;
     list-style: none;
     margin-right: 10px;
+  }
+  .imgc{
+    height: 500px;
+  }
+  .imgc img{
+    height: 500px;
+    width: 1440px;
   }
 </style>
