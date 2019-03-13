@@ -56,40 +56,52 @@
             label: '北京'
           },
           {
+            value: '西安',
+            label: '西安'
+          },
+          {
             value: '上海',
             label: '上海'
           },
           {
-            value: '天津',
-            label: '天津'
+            value: '成都',
+            label: '成都'
+          },
+          {
+            value: '三亚',
+            label: '三亚'
+          },
+          {
+            value: '青岛',
+            label: '青岛'
+          },
+          {
+            value: '杭州',
+            label: '杭州'
+          },
+          {
+            value: '广州',
+            label: '广州'
           },
           {
             value: '重庆',
             label: '重庆'
           },
           {
-            value: '澳门',
-            label: '澳门'
+            value: '厦门',
+            label: '厦门'
           },
           {
-            value: '香港',
-            label: '香港'
+            value: '昆明',
+            label: '昆明'
           },
           {
-            value: '石家庄',
-            label: '石家庄'
+            value: '兰州',
+            label: '兰州'
           },
           {
-            value: '太原',
-            label: '太原'
-          },
-          {
-            value: '沈阳',
-            label: '沈阳'
-          },
-          {
-            value: '长春',
-            label: '长春'
+            value: '南京',
+            label: '南京'
           },
           {
             value: '哈尔滨',
@@ -100,93 +112,29 @@
             label: '济南'
           },
           {
-            value: '南京',
-            label: '南京'
-          },
-          {
-            value: '杭州',
-            label: '杭州'
-          },
-          {
-            value: '合肥',
-            label: '合肥'
-          },
-          {
-            value: '福州',
-            label: '福州'
-          },
-          {
-            value: '台北',
-            label: '台北'
-          },
-          {
-            value: '南昌',
-            label: '南昌'
-          },
-          {
-            value: '郑州',
-            label: '郑州'
-          },
-          {
-            value: '武汉',
-            label: '武汉'
+            value: '深圳',
+            label: '深圳'
           },
           {
             value: '长沙',
             label: '长沙'
           },
           {
-            value: '广州',
-            label: '广州'
+            value: '日照',
+            label: '日照'
           },
           {
-            value: '海口',
-            label: '海口'
+            value: '洛阳',
+            label: '洛阳'
           },
           {
-            value: '成都',
-            label: '成都'
+            value: '晋中',
+            label: '晋中'
           },
           {
-            value: '贵阳',
-            label: '贵阳'
-          },
-          {
-            value: '昆明',
-            label: '昆明'
-          },
-          {
-            value: '西安',
-            label: '西安'
-          },
-          {
-            value: '兰州',
-            label: '兰州'
-          },
-          {
-            value: '西宁',
-            label: '西宁'
-          },
-          {
-            value: '南宁',
-            label: '南宁'
-          },
-          {
-            value: '呼和浩特',
-            label: '呼和浩特'
-          },
-          {
-            value: '拉萨',
-            label: '拉萨'
-          },
-          {
-            value: '银川',
-            label: '银川'
-          },
-          {
-            value: '乌鲁木齐',
-            label: '乌鲁木齐'
-          },
+            value: '太原',
+            label: '太原'
+          }
         ],
         selected: '',
       }
@@ -218,7 +166,9 @@
 </script>
 
 <style>
-
+  .ivu-menu-item{
+    font-size: 20px;
+  }
   .item {
 
   }
