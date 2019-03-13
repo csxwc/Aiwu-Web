@@ -83,7 +83,16 @@
           <div id="date">
             <div><strong style="font-size: 25px;">可订日期</strong></div>
             <hr>
-            <br><br><br><br><br><br><br>
+            <br>
+            <!--<DatePicker type="daterange"-->
+                        <!--placement="bottom-start"-->
+                        <!--placeholder="Select date"-->
+                        <!--style="width: 200px"-->
+                        <!--open="true"-->
+                        <!--size="large"-->
+                        <!--editable="false">-->
+            <!--</DatePicker>-->
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
           <div id="position">
             <div><strong style="font-size: 25px;">位置信息</strong></div>
@@ -182,7 +191,9 @@
             })
             .catch(error=>{
               console.log(error)
-            })
+            });
+          this.$Message.success('预订成功');
+          this.$router.push("/user/my_booked/"+GetInfo.getUserIDByLocalStorage())
         } else {
           this.$Message.warning('您没有登录，请登录');
         }

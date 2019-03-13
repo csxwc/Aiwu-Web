@@ -300,10 +300,10 @@
       }
     },
     mounted() {
-      this.houseInfo.userid = parseInt(GetInfo.getUserIDByLocalStorage());
-      this.$axios.post("http://localhost:8888/lend/getlend",{userid:this.houseInfo.userid})
+      this.houseInfo.userid = GetInfo.getUserIDByLocalStorage();
+      this.$axios.post("http://localhost:8888/lend/getlent",{userid:GetInfo.getUserIDByLocalStorage()})
         .then(resp=>{
-          console.log(resp);
+          // console.log(resp);
           this.data_rel=resp.data;
         })
         .catch(error=>{console.log(error)})

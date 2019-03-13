@@ -76,6 +76,7 @@
               if(parseInt(this.data_prefer[index].room_id) === parseInt(resp.data[i].room_id)){
                 this.$axios.delete("http://localhost:8888/collection/delete/"+resp.data[i].id);
                 this.data_prefer.splice(index, 1);
+                break;
               }
             }
 
