@@ -301,7 +301,8 @@
               title: this.houseInfo.title
             });
           })
-          .catch(error=>{console.log(error)});
+          .catch(error=>{console.log(error);
+          this.$Message.error("网络异常！")});
 
 
 
