@@ -34,7 +34,7 @@
             <Option :key="item.value" :value="item.value" v-for="item in typeList">{{ item.label }}</Option>
           </Select>
         </Col>
-        <Col span="12">价格:<InputNumber :min="1" v-model="houseInfo.price" style="width: 100%;"></InputNumber></Col>
+        <Col span="12">价格:<InputNumber :min="0"  v-model="houseInfo.price" style="width: 100%;"></InputNumber></Col>
       </Row>
       <br>
       <Row :gutter="20">
@@ -235,7 +235,7 @@
           city:'',
           type:'',
           province:'',
-          price:0,
+          price:0.0,
           guest:1,
           bed:1,
           bedroom: 1,
@@ -294,6 +294,16 @@
           .catch(error=>{console.log(error)});
         this.$Message.success("发布成功");
         this.showDrawer=false;
+        console.log(this.data_rel);
+        console.log(this.houseInfo);
+        this.data_rel.push({
+          booktime: 0,
+          city: this.houseInfo.city,
+          price: this.houseInfo.price,
+          title: this.houseInfo.title
+        });
+
+
       },
       cancel(){
         this.showDrawer=false;
