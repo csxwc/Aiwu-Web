@@ -289,19 +289,20 @@
             personid:this.houseInfo.userid
           })
           .then(resp=>{
-            console.log(resp)
+            console.log(resp);
+            this.$Message.success("发布成功");
+            this.showDrawer=false;
+            console.log(this.data_rel);
+            console.log(this.houseInfo);
+            this.data_rel.push({
+              booktime: 0,
+              city: this.houseInfo.city,
+              price: this.houseInfo.price,
+              title: this.houseInfo.title
+            });
           })
           .catch(error=>{console.log(error)});
-        this.$Message.success("发布成功");
-        this.showDrawer=false;
-        console.log(this.data_rel);
-        console.log(this.houseInfo);
-        this.data_rel.push({
-          booktime: 0,
-          city: this.houseInfo.city,
-          price: this.houseInfo.price,
-          title: this.houseInfo.title
-        });
+
 
 
       },
